@@ -8,6 +8,7 @@
 #include <queue>
 #include <cmath>
 #include <memory>
+#include <iostream>
 
 
 using namespace std;
@@ -457,6 +458,7 @@ public:
         assert(3 == climbStairs(3));
         assert(5 == climbStairs(4));
         assert(8 == climbStairs(5));
+        std::cout << "finished climb stairs" << endl;
     }
 };
 
@@ -569,7 +571,7 @@ public:
 };
 
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char * argv[])
 {
     //SingleNumber s;
     //s.test();
