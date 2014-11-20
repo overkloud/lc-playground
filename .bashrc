@@ -216,3 +216,4 @@ alias gcout='git checkout'
 alias gdiff='git diff'
 #alias grep='g'
 
+#alias vsmk='cmake -CMAKE_INSTALL_PREFIX=../install/ -G "Visual Studio 12" ../src/'
