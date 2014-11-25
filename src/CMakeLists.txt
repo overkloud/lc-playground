@@ -11,6 +11,7 @@ add_executable(runLeetCode 	Solution.h
 							PascalTree.h
 							ReverseInteger.h
 							IsSameTree.h
-							SingleNumber.h)
+							SingleNumber.h
+							AddTwoNumbers.h)
 
 install(TARGETS runLeetCode DESTINATION bin)

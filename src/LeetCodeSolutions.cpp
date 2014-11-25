@@ -13,6 +13,7 @@
 #include "SingleNumber.h"
 #include "IsSameTree.h"
 #include "ReverseInteger.h"
+#include "AddTwoNumbers.h"
 
 using namespace std;
 
@@ -69,8 +70,8 @@ int main(int argc, char * argv[])
     TestTemplate tt;
     tt.addTest<BuySellStockII>(false);
     tt.addTest<SearchInsertPosition>(false);
-    tt.addTest<ClimbStairs>(true);
-    
+    tt.addTest<ClimbStairs>(false);
+    tt.addTest<AddTwoNumbers>(true);
     tt.runTest();
     return 0;
 }
