@@ -13,12 +13,12 @@ public:
         {}
     };
 
-    int nodeToInt (ListNode *a)
+    int64_t nodeToInt (ListNode *a)
     {
         if(!a) return -1;
 
-        int power = 0;
-        int intA = 0;
+        int64_t power = 0;
+        int64_t intA = 0;
         while(a)
         {
             intA += pow(10, power) * a->val;
@@ -30,7 +30,7 @@ public:
         return intA;
     }
 
-    ListNode *intToNode(int a)
+    ListNode *intToNode(int64_t a)
     {
         //ListNode * p = new ListNode
 
@@ -70,9 +70,9 @@ public:
     {
         if(!a || !b) return 0;
 
-        int aa = nodeToInt(a);
-        int bb = nodeToInt(b);
-        int sum = aa + bb;
+        int64_t aa = nodeToInt(a);
+        int64_t bb = nodeToInt(b);
+        int64_t sum = aa + bb;
 
         return intToNode(sum);
     }
@@ -84,7 +84,7 @@ public:
     	assert(nodeToInt(addTwoNumbers(intToNode(342), intToNode(465)))==807);
     	assert(nodeToInt(addTwoNumbers(intToNode(100), intToNode(30000)))==30100);
     	assert(nodeToInt(addTwoNumbers(intToNode(2001), intToNode(2)))==2003);
-        cout << nodeToInt(addTwoNumbers(intToNode(9), intToNode(99999991))) << endl;
+        cout << nodeToInt(addTwoNumbers(intToNode(9), intToNode(9999999999991))) << endl;
     }
 };
 

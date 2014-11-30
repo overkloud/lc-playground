@@ -71,7 +71,7 @@ int main(int argc, char * argv[])
     tt.addTest<BuySellStockII>(false);
     tt.addTest<SearchInsertPosition>(false);
     tt.addTest<ClimbStairs>(false);
-    tt.addTest<AddTwoNumbers>(true);
+    tt.addTest<AddTwoNumbers>(false);
     tt.runTest();
     return 0;
 }
