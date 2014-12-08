@@ -12,6 +12,7 @@ add_executable(runLeetCode 	Solution.h
 							ReverseInteger.h
 							IsSameTree.h
 							SingleNumber.h
-							AddTwoNumbers.h)
+							AddTwoNumbers.h
+							Sudoku.h)
 
 install(TARGETS runLeetCode DESTINATION bin)

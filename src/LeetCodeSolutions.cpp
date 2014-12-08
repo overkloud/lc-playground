@@ -14,6 +14,7 @@
 #include "IsSameTree.h"
 #include "ReverseInteger.h"
 #include "AddTwoNumbers.h"
+#include "Sudoku.h"
 
 using namespace std;
 
@@ -72,6 +73,7 @@ int main(int argc, char * argv[])
     tt.addTest<SearchInsertPosition>(false);
     tt.addTest<ClimbStairs>(false);
     tt.addTest<AddTwoNumbers>(false);
+    tt.addTest<Sudoku>(true);
     tt.runTest();
     return 0;
 }
