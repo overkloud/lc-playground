@@ -10,6 +10,7 @@
 #include <cmath>
 #include <memory>
 #include <set>
+#include <stack>
 
 class solution
 {

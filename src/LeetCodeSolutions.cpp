@@ -15,6 +15,7 @@
 #include "ReverseInteger.h"
 #include "AddTwoNumbers.h"
 #include "Sudoku.h"
+#include "LongestParenthese.h"
 
 using namespace std;
 
@@ -73,7 +74,8 @@ int main(int argc, char * argv[])
     tt.addTest<SearchInsertPosition>(false);
     tt.addTest<ClimbStairs>(false);
     tt.addTest<AddTwoNumbers>(false);
-    tt.addTest<Sudoku>(true);
+    tt.addTest<Sudoku>(false);
+    tt.addTest<LongestParenthese>(true);
     tt.runTest();
     return 0;
 }

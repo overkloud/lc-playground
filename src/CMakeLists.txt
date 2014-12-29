@@ -13,6 +13,7 @@ add_executable(runLeetCode 	Solution.h
 							IsSameTree.h
 							SingleNumber.h
 							AddTwoNumbers.h
-							Sudoku.h)
+							Sudoku.h
+							LongestParenthese.h)
 
 install(TARGETS runLeetCode DESTINATION bin)

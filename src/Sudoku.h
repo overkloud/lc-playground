@@ -1,7 +1,8 @@
 #include "Solution.h"
 #include <queue>
+#include <list>
 #include <sstream>
-
+#include <chrono>
 
 struct SudokuUnit
 {
@@ -20,6 +21,40 @@ struct SudokuUnit
     static bool compare (const SudokuUnit & lhs, const SudokuUnit &rhs)
     {
         return lhs.score < rhs.score;
+    }
+
+    vector<pair<int, int>> getAllV()
+    {
+
+        vector<pair<int, int>> ret;
+        if(i == -1)
+        {
+            for(int k = 0; k < 9; k++)
+            {
+                ret.push_back(make_pair(k, j));
+            }
+        }
+
+        else if (j == -1)
+        {
+            for(int k = 0; k < 9; k++)
+            {
+                ret.push_back(make_pair(i, k));
+            }
+        }
+
+        else
+        {
+            for(int p = i; p < i + 3; p++)
+            {
+                for (int q = j; q < j + 3; q++)
+                {
+                    ret.push_back(make_pair(p, q));
+                }
+            }
+        }
+
+        return ret;
     }
 
 };
@@ -160,18 +195,24 @@ public:
         this->v = v;
     }
 
-    typedef priority_queue < SudokuUnit, vector<SudokuUnit>, CompareSudokuUnit > ScoreQuene;
-    Sudoku() {};
-
-    Sudoku(vector<vector<char>> &v, ScoreQuene &q)
+    Sudoku(vector<vector<char>> v, int i, int j, char c)
     {
         this->v = v;
-        this->scoreQueue = q;
+        this->v[i][j] = c;
     }
+
+    // typedef priority_queue < SudokuUnit, vector<SudokuUnit>, CompareSudokuUnit > ScoreQuene;
+    Sudoku() {};
+
+    // Sudoku(vector<vector<char>> &v, ScoreQuene &q)
+    // {
+    //     this->v = v;
+    //     this->scoreQueue = q;
+    // }
 
     vector<vector<char>> v;
     //int scoreMap[3][9];
-    ScoreQuene scoreQueue;
+    // ScoreQuene scoreQueue;
 
     void print()
     {
@@ -185,47 +226,104 @@ public:
         }
     }
 
-    static void Solve(Sudoku & s)
+    char getV(pair<int, int> p)
     {
-        int maxScore;
-        if (s.scoreQueue.empty())
+        return v[p.first][p.second];
+    }
+
+    string toString()
+    {
+        stringstream ss;
+        for(int i = 0; i < 9; i++)
         {
-            maxScore = s.getMaxScore().score;
+            for (int j = 0; j < 9; j++)
+            {
+                ss << v[i][j];
+            }
         }
 
-        if(maxScore == 0) {
-            s.print();
-            return;
-        }
+        return ss.str();
+    }
 
-        SudokuUnit u = s.scoreQueue.top();
-        //s.scoreQueue.pop();
+    static vector<vector<char>> Solve(Sudoku & s)
+    {
+        //int visited [9][9][9];
+        set<string> visited;
 
-        // sq
-        if (u.i != -1 && u.j != -1)
+        int searched = 0;
+        int skipped = 0;
+        int total = 0;
+
+        typedef vector<vector<char>> SV;
+        std::list<Sudoku> Q;
+
+
+        Q.push_back(s);
+
+        while(!Q.empty())
         {
-                        //for (auto c = a.begin(); c != a.end(); c++)
-                        //{
-                        //    Sudoku n(s.v, s.scoreQueue);
-                        //}
-        }
-        // row
-        else if (u.i != -1)
-        {
+            Sudoku &v = Q.front();
+            //Q.pop_front();
+            SudokuUnit su = v.getMinScore();
+            //cout << "Solving: " << su.i << "\t" << su.j << "\t" << su.score << endl;
+            //v.print();
+            if(su.score == 9*9)
+            {
+                cout << "======================"<< endl;
+                v.print();
 
-        }
-        // col
-        else
-        {
+                cout << total << ":\t " << skipped << "/" << searched << endl;
+                return v.v;
+            }
+            vector<pair<int, int>> p = su.getAllV();
+            for (auto it = p.begin(); it != p.end(); it++)
+            {
+                if(v.getV(*it) != '.') continue;
 
+                //if(!visited[it->first][it->second])
+                {
+                    vector<char> possible = v.getPossible(it->first, it->second);
+                    total += possible.size();
+                    for(auto ij = possible.begin(); ij != possible.end(); ij++)
+                    {
+                        {
+                            //cout << "(" << it->first << "," << it->second << ") = " << *ij << endl; 
+                            Sudoku newS (v.v, it->first, it->second, *ij);
+                            if(su.score <= 3)
+                            {
+                                string key = newS.toString();
+                                if(visited.find(key) == visited.end())
+                                {
+                                    visited.insert(key);
+                                }
+                                else
+                                {
+                                    skipped++;
+                                    continue;
+                                }
+                            }
+                            
+                            //newS.print();
+                            Q.push_back(newS);
+                            searched++;
+                            //visited[it->first][it->second][c] = 1;   
+                        }
+                       
+                    }
+                    //visited[it->first][it->second] = 1;
+                }
+            }
+            Q.pop_front();
         }
+        return s.v;
     }
 
 
-    set<char> getPossible(int i, int j)
+    vector<char> getPossible(int i, int j)
     {
-        set<char> a({ '1', '2', '3', '4', '5', '6', '7', '8', '9' });
+        //set<char> a({ '1', '2', '3', '4', '5', '6', '7', '8', '9' });
 
+        char a[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
         int sq_i = (i / 3) * 3;
         int sq_j = (j / 3) * 3;
 
@@ -234,20 +332,28 @@ public:
         {
             for (int n = sq_j; n < sq_j + 3; n++)
             {
-                if (v[m][n] != '.') a.erase(v[m][n]);
+                //if (v[m][n] != '.') a.erase(v[m][n]);
+                if (v[m][n] != '.') a[v[m][n] - '1'] = '0';
             }
         }
 
-        for_each(v[i].begin(), v[i].end(), [&a](char i){ if (i != '.') a.erase(i); });
+        //for_each(v[i].begin(), v[i].end(), [&a](char i){ if (i != '.') a.erase(i); });
+        for_each(v[i].begin(), v[i].end(), [&a](char i){ if (i != '.') a[i - '1'] = '0'; });
 
-        for_each(v.begin(), v.end(), [&a, &j](vector<char>& s) {if (s[j] != '.') a.erase(s[j]); });
+        for_each(v.begin(), v.end(), [&a, &j](vector<char>& s) {if (s[j] != '.') a[s[j] - '1'] = '0'; });
 
-        return a;
+
+        vector<char> s;
+        for(char i : a)
+        {
+            if(i != '0') s.push_back(i);
+        }
+        return s;
     }
 
-    SudokuUnit getMaxScore()
+    SudokuUnit getMinScore()
     {
-        int maxScore  = 0;
+        int minScore  = 9*9;
         int posI = -1;
         int posJ = -1;
 
@@ -255,10 +361,10 @@ public:
         for(int i = 0;  i < 9; i++)
         {
             int s = getRowScore(i);
-            scoreQueue.emplace(i, -1, s);
-            if (s > maxScore)
+            //scoreQueue.emplace(i, -1, s);
+            if (s > 0 && s < minScore)
             {
-                maxScore = s;
+                minScore = s;
                 posI = i;
                 posJ = -1;
             }
@@ -267,10 +373,10 @@ public:
         for(int i = 0;  i < 9; i++)
         {
             int s = getColScore(i);
-            scoreQueue.emplace(-1, i, s);
-            if (s > maxScore)
+            //scoreQueue.emplace(-1, i, s);
+            if (s > 0 && s < minScore)
             {
-                maxScore = s;
+                minScore = s;
                 posJ = i;
                 posI = -1;
             }
@@ -281,17 +387,17 @@ public:
             for (int j = 0; j < 9; j = j + 3)
             {
                 int s = getSqScore(i, j);
-                scoreQueue.emplace(i, j, s);
-                if(s >= maxScore)
+                //scoreQueue.emplace(i, j, s);
+                if(s > 0 && s < minScore)
                 {
-                    maxScore = s;
+                    minScore = s;
                     posI = i;
                     posJ = j;
                 }
             }
         }
 
-        return SudokuUnit(posI, posJ, maxScore);
+        return SudokuUnit(posI, posJ, minScore);
     }
 
     int getRowScore(int i)
@@ -335,19 +441,19 @@ public:
     {
         vector<vector<char>> v;
 
-        v.push_back({'5',    '3',    '.',    '.',    '7',    '.',    '.',    '.',    '.'});
-        v.push_back({'6',    '.',    '.',    '1',    '9',    '5',    '.',    '.',    '.'});
-        v.push_back({'.',    '9',    '8',    '.',    '.',    '.',    '.',    '6',    '.'});
-        v.push_back({'8',    '.',    '.',    '.',    '6',    '.',    '.',    '.',    '3'});
-        v.push_back({'4',    '.',    '.',    '8',    '.',    '3',    '.',    '.',    '1'});
-        v.push_back({'7',    '.',    '.',    '.',    '2',    '.',    '.',    '.',    '6'});
-        v.push_back({'.',    '6',    '.',    '.',    '.',    '.',    '2',    '8',    '.'});
-        v.push_back({'.',    '.',    '8',    '4',    '1',    '9',    '.',    '.',    '5'});
-        v.push_back({'.',    '.',    '.',    '.',    '8',    '.',    '.',    '7',    '9'});
+        v.push_back({'.',    '.',    '.',   '.',    '.',    '8',    '.',    '.',    '7'});
+        v.push_back({'.',    '2',    '.',   '.',    '.',    '.',    '9',    '8',    '.'});
+        v.push_back({'.',    '5',    '.',   '.',    '4',    '.',    '.',    '.',    '3'});
+        v.push_back({'.',    '6',    '.',   '.',    '5',    '3',    '.',    '.',    '.'});
+        v.push_back({'9',    '.',    '.',   '2',    '.',    '6',    '.',    '.',    '4'});
+        v.push_back({'.',    '.',    '.',   '4',    '1',    '.',    '.',    '5',    '.'});
+        v.push_back({'5',    '.',    '.',   '.',    '7',    '.',    '.',    '9',    '.'});
+        v.push_back({'.',    '3',    '7',   '.',    '.',    '.',    '.',    '2',    '.'});
+        v.push_back({'8',    '.',    '.',   '1',    '.',    '.',    '.',    '.',    '.'});
 
 
-        Sudoku s(move(v));
-        s.print();
+        Sudoku s(v);
+        //s.print();
         /*cout << s.isValidSudoku() << endl;
         for (int i = 0; i < 9; i++)
             cout << s.getRowScore(i) << "\t";
@@ -359,11 +465,56 @@ public:
             for (int j = 0; j < 9; j = j + 3)
                 cout << "(" << i << ", " << j << ")=" << s.getSqScore(i, j) << endl;*/
 
-        toString ts;
-        string s1(ts(s.getPossible(0, 0)));
-        cout << "Possible for (0,0)" << s1 << endl;
-        cout << "Possible for (8,8)" << ts(s.getPossible(8, 8)) << endl;
+        //toString ts;
+        //string s1(ts(s.getPossible(0, 0)));
+        //cout << "Possible for (0,0)" << s1 << endl;
+        //cout << "Possible for (8,8)" << ts(s.getPossible(8, 8)) << endl;
+
+        using namespace std::chrono;
+
+        high_resolution_clock::time_point t1 = high_resolution_clock::now();
+        Sudoku::Solve(s);
+        high_resolution_clock::time_point t2 = high_resolution_clock::now();
+
+        duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
+
+        std::cout << "It took me " << time_span.count() << " seconds.";
+        std::cout << std::endl;
+
+        v.clear();
+        v.push_back({'.',    '.',    '.',   '.',    '.',    '7',    '.',    '.',    '9'});
+        v.push_back({'.',    '4',    '.',   '.',    '8',    '1',    '2',    '.',    '.'});
+        v.push_back({'.',    '.',    '.',   '9',    '.',    '.',    '.',    '1',    '.'});
+        v.push_back({'.',    '.',    '5',   '3',    '.',    '.',    '.',    '7',    '2'});
+        v.push_back({'2',    '9',    '3',   '.',    '.',    '.',    '.',    '5',    '.'});
+        v.push_back({'.',    '.',    '.',   '.',    '.',    '5',    '3',    '.',    '.'});
+        v.push_back({'8',    '.',    '.',   '.',    '2',    '3',    '.',    '.',    '.'});
+        v.push_back({'7',    '.',    '.',   '.',    '5',    '.',    '.',    '4',    '.'});
+        v.push_back({'5',    '3',    '1',   '.',    '7',    '.',    '.',    '.',    '.'});
+        t1 = high_resolution_clock::now();
+        Sudoku s2(v);
+        Sudoku::Solve(s2);
+        t2 = high_resolution_clock::now();
+
+        time_span = duration_cast<duration<double>>(t2 - t1);
+
+        std::cout << "It took me " << time_span.count() << " seconds.";
+        std::cout << std::endl;
     }
 
 };
+
+
+// class Solution {
+// public:
+//     void solveSudoku(vector<vector<char> > &board) {
+//         Sudoku sdk(board);
+//         vector<vector<char>> v = Sudoku::Solve(sdk);
+
+//         for(int i = 0; i < 9; i++)
+//             for(int j = 0; j < 9; j++)
+//                 board[i][j] = v[i][j];
+//     }
+// };
+
 
