@@ -14,72 +14,33 @@ class LongestParenthese : public solution
 public:
     static int longestValidParentheses(string s) {
 
-        stack <char> t;
-        int maxLength = 0;
-        int start = -1;
-        int end = -1;
-        for (int i = 0; i < s.length(); i++)
-        {
-            char c = s.at(i);
-            if (c == '(')
-            {
-                t.push(c);
-                if (start == -1) start = i;
-            }
-            else
-            {
-                if (t.size() > 0)
-                {
-                    char cc = t.top();
-                    t.pop();
-                    //end = i;
-                    if (i - start > maxLength)
-                    {
-                        end = i;
-                        maxLength = end - start + 1;
-                    }
-                }
-                else
-                {
-                    stack<char> tt;
-                    t.swap(tt);
-                    start = -1;
-                    end = -1;
-                }
-            }
-        }
-        //for (int i = s.length() - 1; i >= 0; i--)
-        //{
-        //    char c = s.at(i);
-        //    if (c == ')')
-        //    {
-        //        t.push(c);
-        //        if (start == -1) start = i;
-        //    }
-        //    else
-        //    {
-        //        if (t.size() > 0)
-        //        {
-        //            char cc = t.top();
-        //            t.pop();
-        //            //end = i;
-        //            if (i - start > maxLength)
-        //            {
-        //                end = i;
-        //                maxLength = end - start;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            stack<char> tt;
-        //            t.swap(tt);
-        //            start = -1;
-        //            end = -1;
-        //        }
-        //    }
-        //}
+        // stack <char> t;
+        // int totalMax = 0;
+        // int currenMax = 0;
+        // for(int i = 0; i < s.length(); i++)
+        // {
+        //  char c  = s.at(i);
+        //  if(c == '(')
+        //  {
+        //      t.push(c);
+        //      currentMax = 0;
+        //  }
+        //  else
+        //  {
+        //      if(!t.empty())
+        //      {
+        //          t.pop();
+        //          currentMax += 2;
+        //          if(t.empty())
+        //          {
+        //              totalMax += currentMax;
+        //          }
+        //      }
+        //  }
+        // }
+  //       return maxLength;
 
-        return maxLength;
+        return 0;
     }
 
     void test()
@@ -87,7 +48,8 @@ public:
         assert(longestValidParentheses("(()()") == 4);
         assert(longestValidParentheses("()") == 2);
         assert(longestValidParentheses("(()") == 2);
-        assert(longestValidParentheses("()(()") == 2);
+        assert(longestValidParentheses("()(()") == 2);      
+
     }
 };
 

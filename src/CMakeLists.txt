@@ -14,6 +14,7 @@ add_executable(runLeetCode 	Solution.h
 							SingleNumber.h
 							AddTwoNumbers.h
 							Sudoku.h
-							LongestParenthese.h)
+							LongestParenthese.h
+							RegexMatch.h)
 
 install(TARGETS runLeetCode DESTINATION bin)
