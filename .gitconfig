@@ -1,0 +1,12 @@
+[user]
+    name = Jeff Jiang
+    email = jeffrey.yt.jiang@gmail.com
+[push]
+    default = simple
+[alias]
+    cgl = config --global --list
+    ci = commit
+    co = checkout
+    fap = fetch --all -p
+    lg = log --pretty=medium --color --date=local -n
+    df = diff
