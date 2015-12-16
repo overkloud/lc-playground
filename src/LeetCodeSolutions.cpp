@@ -16,6 +16,7 @@
 #include "AddTwoNumbers.h"
 #include "Sudoku.h"
 #include "LongestParenthese.h"
+#include "GrayCode.h"
 
 using namespace std;
 
@@ -75,7 +76,8 @@ int main(int argc, char * argv[])
     tt.addTest<ClimbStairs>(false);
     tt.addTest<AddTwoNumbers>(false);
     tt.addTest<Sudoku>(false);
-    tt.addTest<LongestParenthese>(true);
+    tt.addTest<LongestParenthese>(false);
+    tt.addTest<GrayCode>(true);
     tt.runTest();
     return 0;
 }
