@@ -3,20 +3,22 @@ project ("LeetCodePlayground")
 
 
 SET(CMAKE_CXX_FLAGS "-std=c++11")
-add_executable(runLeetCode 	Solution.h
-							LeetCodeSolutions.cpp
-							MaxDepth.h
-							BuyStock.h
-							SearchInsertPosition.h
-							PascalTree.h
-							ReverseInteger.h
-							IsSameTree.h
-							SingleNumber.h
-							AddTwoNumbers.h
-							Sudoku.h
-							LongestParenthese.h
-							RegexMatch.h
-                            GrayCode.h
-							)
+add_executable(runLeetCode 	
+	Solution.h
+	LeetCodeSolutions.cpp
+	MaxDepth.h
+	BuyStock.h
+	SearchInsertPosition.h
+	PascalTree.h
+	ReverseInteger.h
+	IsSameTree.h
+	SingleNumber.h
+	AddTwoNumbers.h
+	Sudoku.h
+	LongestParenthese.h
+	RegexMatch.h
+	GrayCode.h
+	SampleHeader.h
+)
 
 install(TARGETS runLeetCode DESTINATION bin)

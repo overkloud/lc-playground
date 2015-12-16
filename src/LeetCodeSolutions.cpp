@@ -17,6 +17,7 @@
 #include "Sudoku.h"
 #include "LongestParenthese.h"
 #include "GrayCode.h"
+#include "SampleHeader.h"
 
 using namespace std;
 
