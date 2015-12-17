@@ -19,6 +19,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	KthSmallest.h
 )
 
 install(TARGETS runLeetCode DESTINATION bin)

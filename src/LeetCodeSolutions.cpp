@@ -17,6 +17,7 @@
 #include "Sudoku.h"
 #include "LongestParenthese.h"
 #include "GrayCode.h"
+#include "KthSmallest.h"
 #include "SampleHeader.h"
 
 using namespace std;
@@ -78,7 +79,8 @@ int main(int argc, char * argv[])
     tt.addTest<AddTwoNumbers>(false);
     tt.addTest<Sudoku>(false);
     tt.addTest<LongestParenthese>(false);
-    tt.addTest<GrayCode>(true);
+    tt.addTest<GrayCode>(false);
+    tt.addTest<KthSmallest>(true);
     tt.runTest();
     return 0;
 }
