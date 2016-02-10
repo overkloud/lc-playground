@@ -12,6 +12,25 @@
 #include <set>
 #include <stack>
 
+using namespace std;
+
+void print(vector<int> &v)
+{
+    for(auto i : v)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
+}
+
+void print(vector<vector<int>> &v)
+{
+    for(auto row : v)
+    {
+        print(row);
+    }
+}
+
 class solution
 {
 public:

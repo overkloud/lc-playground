@@ -16,6 +16,14 @@ add_executable(runLeetCode
 	AddTwoNumbers.h
 	Sudoku.h
 	LongestParenthese.h
+    MissingNumber.h
+    UniqueBST.h
+    ArrayToBST.h
+    FindMinInRotateSortedArray.h
+    RotateImage.h
+    UniquePaths.h
+    Permutation.h
+    NextRightNode.h
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h

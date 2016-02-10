@@ -15,28 +15,19 @@
 #include "ReverseInteger.h"
 #include "AddTwoNumbers.h"
 #include "Sudoku.h"
+#include "MissingNumber.h"
 #include "LongestParenthese.h"
 #include "GrayCode.h"
 #include "KthSmallest.h"
 #include "SampleHeader.h"
+#include "FindMinInRotateSortedArray.h"
+#include "RotateImage.h"
+#include "UniquePaths.h"
+#include "Permutation.h"
+#include "NextRightNode.h" 
+
 
 using namespace std;
-
-class NextRightPointer : public solution
-{
-public:
-    struct TreeLinkNode {
-        int val;
-        TreeLinkNode *left, *right, *next;
-        TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) {}
-        
-    };
-
-    void connect(TreeLinkNode *root) {
-
-    }
-
-};
 
 class TestTemplate
 {
@@ -81,6 +72,12 @@ int main(int argc, char * argv[])
     tt.addTest<LongestParenthese>(false);
     tt.addTest<GrayCode>(false);
     tt.addTest<KthSmallest>(true);
+    tt.addTest<MissingNumber>(false);
+    tt.addTest<FindMinInRotateSortedArray>(false);
+    tt.addTest<RotateImage>(false);
+    tt.addTest<UniquePaths>(false);
+    tt.addTest<Permutation>(true);
+
     tt.runTest();
     return 0;
 }
