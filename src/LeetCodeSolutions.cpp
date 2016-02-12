@@ -71,13 +71,14 @@ int main(int argc, char * argv[])
     tt.addTest<Sudoku>(false);
     tt.addTest<LongestParenthese>(false);
     tt.addTest<GrayCode>(false);
-    tt.addTest<KthSmallest>(true);
+    tt.addTest<KthSmallest>(false);
     tt.addTest<MissingNumber>(false);
     tt.addTest<FindMinInRotateSortedArray>(false);
     tt.addTest<RotateImage>(false);
     tt.addTest<UniquePaths>(false);
-    tt.addTest<Permutation>(true);
-
+    tt.addTest<Permutation>(false);
+    tt.addTest<KthSmallest>(false);
+    tt.addTest<Sample>(false);
     tt.runTest();
     return 0;
 }

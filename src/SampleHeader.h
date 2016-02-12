@@ -6,7 +6,10 @@ class Sample: public  solution {
 
 public:
 
+
+
     virtual void test()
     {
+
     }
 };
