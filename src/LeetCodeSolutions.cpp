@@ -20,6 +20,7 @@
 #include "GrayCode.h"
 #include "KthSmallest.h"
 #include "TimeConversion.h"
+#include "SearchGrid.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
