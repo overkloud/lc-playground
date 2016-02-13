@@ -60,6 +60,8 @@ public:
             if (1 == k) return root->val;
             else return searchForK(root->right, k - 1);
         }
+
+        return 0;
     }
 
 
