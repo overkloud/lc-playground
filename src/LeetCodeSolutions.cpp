@@ -19,6 +19,7 @@
 #include "LongestParenthese.h"
 #include "GrayCode.h"
 #include "KthSmallest.h"
+#include "TimeConversion.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"

@@ -11,6 +11,9 @@
 #include <memory>
 #include <set>
 #include <stack>
+#include <sstream>
+#include <functional>
+
 
 using namespace std;
 

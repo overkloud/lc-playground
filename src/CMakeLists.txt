@@ -27,6 +27,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	TimeConversion.h
 	KthSmallest.h
 )
 
