@@ -46,4 +46,9 @@ public:
 
 
 
+class HRsolution : public solution
+{
+    virtual ostream & run(istream & in) = 0;
+};
+
 #endif
