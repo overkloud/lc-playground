@@ -14,6 +14,7 @@
 #include <sstream>
 #include <functional>
 #include <fstream>
+#include <cstdio>
 
 using namespace std;
 
@@ -34,27 +35,55 @@ void print(vector<vector<int>> &v)
     }
 }
 
-
-vector<string> split(const char *str, char c = ' ')
+template <class T> vector<T> split(const char * str, const char c,  std::function <T(string)> transform)
 {
-    vector<string> result;
-
+    vector<T> v;
     do
     {
+        if (!str || !*str) break;
         const char *begin = str;
 
         while (*str != c && *str)
             str++;
-
-        result.push_back(string(begin, str));
+        v.push_back(transform(string(begin, str)));
     } while (0 != *str++);
 
-    return result;
+    return v;
+}
+
+vector<string> split(const char *str, char c = ' ')
+{
+    function <string(string)> f = [](string &s)
+    {
+        return std::move(s);
+    };
+    return split<string>(str, c, f);
 }
 
 vector<string> split(const string s, char c = ' ')
 {
     return split(s.c_str(), c);
+}
+
+vector<int> splitToInts(const char * str, const char c = ' ')
+{
+    std::function <int(string)> f = [](string s)
+    {
+        return atoi(s.c_str());
+    };
+    return split<int>(str, c, f);
+}
+
+vector<int> splitToInts(const string s, const char c = ' ')
+{
+    return splitToInts(s.c_str(), c);
+}
+
+vector<int> readInts(istream & in, const char delim = ' ')
+{
+    string line;
+    getline(in, line);
+    return splitToInts(line, delim);
 }
 
 class solution
