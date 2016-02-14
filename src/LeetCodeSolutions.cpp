@@ -23,6 +23,7 @@
 #include "SearchGrid.h"
 #include "MatrixRotation.h"
 #include "QuickSort.h"
+#include "ExtraLongFactorials.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -83,7 +84,8 @@ int main(int argc, char * argv[])
     tt.addTest<Permutation>(false);
     tt.addTest<KthSmallest>(false);
     tt.addTest<MatrixRotation>(false);
-    tt.addTest<QuickSort>(true);
+    tt.addTest<QuickSort>(false);
+    tt.addTest<ExtraLongFactorials>(true);
 
     tt.addTest<Sample>(false);
     tt.runTest();
