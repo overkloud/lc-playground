@@ -13,7 +13,7 @@
 #include <stack>
 #include <sstream>
 #include <functional>
-
+#include <fstream>
 
 using namespace std;
 
@@ -34,6 +34,29 @@ void print(vector<vector<int>> &v)
     }
 }
 
+
+vector<string> split(const char *str, char c = ' ')
+{
+    vector<string> result;
+
+    do
+    {
+        const char *begin = str;
+
+        while (*str != c && *str)
+            str++;
+
+        result.push_back(string(begin, str));
+    } while (0 != *str++);
+
+    return result;
+}
+
+vector<string> split(const string s, char c = ' ')
+{
+    return split(s.c_str(), c);
+}
+
 class solution
 {
 public:
@@ -48,7 +71,7 @@ public:
 
 class HRsolution : public solution
 {
-    virtual ostream & run(istream & in) = 0;
+    virtual void run(istream & in, ostream & out) = 0;
 };
 
 #endif
