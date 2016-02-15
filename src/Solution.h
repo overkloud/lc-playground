@@ -53,7 +53,7 @@ template <class T> vector<T> split(const char * str, const char c,  std::functio
 
 vector<string> split(const char *str, char c = ' ')
 {
-    function <string(string)> f = [](string &s)
+    function <string(string)> f = [](string &&s)
     {
         return std::move(s);
     };
@@ -85,6 +85,16 @@ vector<int> readInts(istream & in, const char delim = ' ')
     getline(in, line);
     return splitToInts(line, delim);
 }
+
+template <class T>
+void initArray(T *array, const int size, function<T()> initFunc)
+{
+    for (int i = 0; i < size; i++)
+    {
+        array[i] = initFunc();
+    }
+}
+
 
 class solution
 {

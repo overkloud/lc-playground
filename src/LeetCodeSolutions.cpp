@@ -24,6 +24,7 @@
 #include "MatrixRotation.h"
 #include "QuickSort.h"
 #include "ExtraLongFactorials.h"
+#include "CountSort.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -85,8 +86,8 @@ int main(int argc, char * argv[])
     tt.addTest<KthSmallest>(false);
     tt.addTest<MatrixRotation>(false);
     tt.addTest<QuickSort>(false);
-    tt.addTest<ExtraLongFactorials>(true);
-
+    tt.addTest<ExtraLongFactorials>(false);
+    tt.addTest<CountSort>(true);
     tt.addTest<Sample>(false);
     tt.runTest();
     return 0;
