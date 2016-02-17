@@ -15,6 +15,7 @@
 #include <functional>
 #include <fstream>
 #include <cstdio>
+#include <time.h>
 
 using namespace std;
 
@@ -35,9 +36,10 @@ void print(vector<vector<int>> &v)
     }
 }
 
-template <class T> vector<T> split(const char * str, const char c,  std::function <T(string)> transform)
+template <class T> vector<T> split(const char * str, const char c,  std::function <T(string)> transform, int size = 0)
 {
-    vector<T> v;
+    vector<T> v(size);
+    int count = 0;
     do
     {
         if (!str || !*str) break;
@@ -45,7 +47,16 @@ template <class T> vector<T> split(const char * str, const char c,  std::functio
 
         while (*str != c && *str)
             str++;
-        v.push_back(transform(string(begin, str)));
+        if (0 == size)
+        {
+            v.push_back(transform(string(begin, str)));
+        }
+        else
+        {
+            if (count == size) break;
+            v[count++] = transform(string(begin, str));
+        }
+
     } while (0 != *str++);
 
     return v;
@@ -65,25 +76,25 @@ vector<string> split(const string s, char c = ' ')
     return split(s.c_str(), c);
 }
 
-vector<int> splitToInts(const char * str, const char c = ' ')
+vector<int> splitToInts(const char * str, const char c = ' ', const int size = 0)
 {
     std::function <int(string)> f = [](string s)
     {
         return atoi(s.c_str());
     };
-    return split<int>(str, c, f);
+    return split<int>(str, c, f, size);
 }
 
-vector<int> splitToInts(const string s, const char c = ' ')
+vector<int> splitToInts(const string s, const char c = ' ', const int size = 0)
 {
-    return splitToInts(s.c_str(), c);
+    return splitToInts(s.c_str(), c, size);
 }
 
-vector<int> readInts(istream & in, const char delim = ' ')
+vector<int> readInts(istream & in, const char delim = ' ', const int size = 0)
 {
     string line;
     getline(in, line);
-    return splitToInts(line, delim);
+    return splitToInts(line, delim, size);
 }
 
 template <class T>
@@ -112,5 +123,30 @@ class HRsolution : public solution
 {
     virtual void run(istream & in, ostream & out) = 0;
 };
+
+
+namespace testUtil
+{
+    vector<int> randomGen(const int size, const int range)
+    {
+        vector<int> results(size);
+        srand(time(NULL));
+        for (int i = 0; i < size; i++)
+        {
+            results[i] = rand() % range;
+        }
+
+        ofstream out("a.random");
+        for (auto i : results)
+        {
+            out << i << " ";
+        }
+        out.close();
+        return results;
+    }
+
+};
+
+
 
 #endif
