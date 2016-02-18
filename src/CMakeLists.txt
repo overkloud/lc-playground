@@ -27,6 +27,8 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	TwoRobots.h
+	FixTheCircle.h
 	InsertSort.h
 	CountSort.h
 	ExtraLongFactorials.h

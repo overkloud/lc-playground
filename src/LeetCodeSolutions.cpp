@@ -26,6 +26,8 @@
 #include "ExtraLongFactorials.h"
 #include "CountSort.h"
 #include "InsertSort.h"
+#include "FixTheCircle.h"
+#include "TwoRobots.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -89,7 +91,9 @@ int main(int argc, char * argv[])
     tt.addTest<QuickSort>(false);
     tt.addTest<ExtraLongFactorials>(false);
     tt.addTest<CountSort>(false);
-    tt.addTest<InsertSort>(true);
+    tt.addTest<InsertSort>(false);
+    tt.addTest<FixTheCircle>(false);
+    tt.addTest<TwoRobots>(true);
     tt.addTest<Sample>(false);
     tt.runTest();
     return 0;
