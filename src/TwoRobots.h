@@ -20,7 +20,7 @@ public:
         }
     };
 
-    int calc(vector<vector<int>> &R, const int M)
+    int calc2(vector<vector<int>> &R, const int M)
     {
         set<int> ins;
         set<int> outs;
@@ -75,6 +75,131 @@ public:
             }
         }
 
+        return sum;
+    }
+
+
+    struct pos
+    {
+        int a;
+        int b;
+        int cost;
+
+        pos(int a, int b, int cost )
+        {
+            this->a = min(a, b);
+            this->b = max(a, b);
+            this->cost = cost;
+        }
+
+        long long  s()
+        {
+            return getKey(a, b);
+        }
+
+        static long long getKey(int a, int b)
+        {
+            int i = min(a, b);
+            int j = max(a, b);
+            long long key = a << 8 | b;
+            return key;
+        }
+    };
+
+    int calc_help(vector<vector<int>> & v)
+    {
+        vector<map<long long, pos*>> cost;
+        for (int i = v.size() - 1; i >= 0; i--)
+        {
+            auto it = v[i];
+            int in = it[0];
+            int out = it[1];
+            map<long long, pos*> m;
+            if (i == v.size() - 1)
+            {
+                pos*s = new pos(i, -1, 0);
+                m.emplace(s->s(), s);
+                cost.push_back(m);
+            }
+            else if (i == v.size() - 2)
+            {
+                pos* s = new pos(i, i + 1, 0);
+                m.emplace(s->s(), s);
+
+                pos* s2 = new pos(i, -1, abs(out - v[i+1][0]));
+                m.emplace(s2->s(), s2);
+                cost.push_back(m);
+            }
+            else
+            {
+                for (auto j : cost[v.size() - 2 - i])
+                {
+                    auto p = j.second;
+                    if (p->a == -1)
+                    {
+                        pos * p1 = new pos(i, -1, abs(out - v[p->b][0]) + p->cost);
+                        m.emplace(p1->s(), p1);
+
+                        pos *p2 = new pos(i, p->b, p->cost);
+                        m.emplace(p2->s(), p2);
+                    }
+                    else
+                    {
+                        int dist_a = abs(out - v[p->a][0]);
+                        int dist_b = abs(out - v[p->b][0]);
+
+                        long long ka = pos::getKey(i, p->b);
+                        if (m.find(ka) != m.end())
+                        {
+                            auto it = m.find(ka);
+                            if (it->second->cost > p->cost + dist_a)
+                                it->second->cost = p->cost + dist_a;
+                        }
+                        else {
+                            pos * pa = new pos(i, p->b, p->cost + dist_a);
+                            m.emplace(pa->s(), pa);
+                        }
+
+                        long long kb = pos::getKey(i, p->a);
+                        if (m.find(kb) != m.end())
+                        {
+                            auto it = m.find(kb);
+                            if (it->second->cost > p->cost + dist_b)
+                                it->second->cost = p->cost + dist_b;
+                        }
+                        else {
+                            pos * pb = new pos(i, p->a, p->cost + dist_b);
+                            m.emplace(pb->s(), pb);
+                        }
+                    }
+                }
+                cost.push_back(m);
+            }
+        }
+
+        int min = -1;
+        auto x = cost.back();
+        for (auto i : x)
+        {
+            if (min == -1)
+                min = i.second->cost;
+            else if (min > i.second->cost)
+                min = i.second->cost;
+        }
+
+        return min;
+    }
+
+    int calc(vector<vector<int>> v, const int M)
+    {
+        int sum = 0;
+        for (auto i : v)
+        {
+            sum += abs(i[1] - i[0]);
+        }
+
+        sum = sum + calc_help(v);
+        
         return sum;
     }
 
