@@ -28,6 +28,8 @@
 #include "InsertSort.h"
 #include "FixTheCircle.h"
 #include "TwoRobots.h"
+#include "ScalarProduct.h"
+#include "SumMinInterval.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -72,30 +74,46 @@ public:
 
 int main(int argc, char * argv[])
 {
-    TestTemplate tt;
-    tt.addTest<BuySellStockII>(false);
-    tt.addTest<SearchInsertPosition>(false);
-    tt.addTest<ClimbStairs>(false);
-    tt.addTest<AddTwoNumbers>(false);
-    tt.addTest<Sudoku>(false);
-    tt.addTest<LongestParenthese>(false);
-    tt.addTest<GrayCode>(false);
-    tt.addTest<KthSmallest>(false);
-    tt.addTest<MissingNumber>(false);
-    tt.addTest<FindMinInRotateSortedArray>(false);
-    tt.addTest<RotateImage>(false);
-    tt.addTest<UniquePaths>(false);
-    tt.addTest<Permutation>(false);
-    tt.addTest<KthSmallest>(false);
-    tt.addTest<MatrixRotation>(false);
-    tt.addTest<QuickSort>(false);
-    tt.addTest<ExtraLongFactorials>(false);
-    tt.addTest<CountSort>(false);
-    tt.addTest<InsertSort>(false);
-    tt.addTest<FixTheCircle>(false);
-    tt.addTest<TwoRobots>(true);
-    tt.addTest<Sample>(false);
-    tt.runTest();
+    if (argc <= 1) {
+        TestTemplate tt;
+        tt.addTest<BuySellStockII>(false);
+        tt.addTest<SearchInsertPosition>(false);
+        tt.addTest<ClimbStairs>(false);
+        tt.addTest<AddTwoNumbers>(false);
+        tt.addTest<Sudoku>(false);
+        tt.addTest<LongestParenthese>(false);
+        tt.addTest<GrayCode>(false);
+        tt.addTest<KthSmallest>(false);
+        tt.addTest<MissingNumber>(false);
+        tt.addTest<FindMinInRotateSortedArray>(false);
+        tt.addTest<RotateImage>(false);
+        tt.addTest<UniquePaths>(false);
+        tt.addTest<Permutation>(false);
+        tt.addTest<KthSmallest>(false);
+        tt.addTest<MatrixRotation>(false);
+        tt.addTest<QuickSort>(false);
+        tt.addTest<ExtraLongFactorials>(false);
+        tt.addTest<CountSort>(false);
+        tt.addTest<InsertSort>(false);
+        tt.addTest<FixTheCircle>(false);
+        tt.addTest<TwoRobots>(false);
+        tt.addTest<ScalarProduct>(false);
+        tt.addTest<SumMinInterval>(true);
+        tt.addTest<Sample>(false);
+        tt.runTest();
+    }
+    else
+    {
+        string arg1(argv[1]);
+        cout << "here" << endl;
+        if (arg1 == "--random")
+        {
+            int size = atoi(argv[2]);
+            int range= atoi(argv[3]);
+            testUtil::randomGen(size, range);
+            //print(v);
+        }
+    }
     return 0;
 }
 
