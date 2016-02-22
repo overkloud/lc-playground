@@ -16,6 +16,7 @@
 #include <fstream>
 #include <cstdio>
 #include <time.h>
+#include <iostream>
 
 using namespace std;
 
