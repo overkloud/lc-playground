@@ -90,6 +90,17 @@ vector<int> splitToInts(const string s, const char c = ' ', const int size = 0)
     return splitToInts(s.c_str(), c, size);
 }
 
+vector<long long int> readLLInts(istream & in, const char delim = ' ', const int size = 0)
+{
+    string line;
+    getline(in, line);
+    std::function <long long int(string)> f = [](string s)
+    {
+        return atoll(s.c_str());
+    };
+    return split<long long int>(line.c_str(), delim, f, size);
+}
+
 vector<int> readInts(istream & in, const char delim = ' ', const int size = 0)
 {
     string line;

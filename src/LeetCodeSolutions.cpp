@@ -30,6 +30,7 @@
 #include "TwoRobots.h"
 #include "ScalarProduct.h"
 #include "SumMinInterval.h"
+#include "MaxSumModuleSubarray.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -98,7 +99,8 @@ int main(int argc, char * argv[])
         tt.addTest<FixTheCircle>(false);
         tt.addTest<TwoRobots>(false);
         tt.addTest<ScalarProduct>(false);
-        tt.addTest<SumMinInterval>(true);
+        tt.addTest<SumMinInterval>(false);
+        tt.addTest<MaxSumModuleSubarray>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }

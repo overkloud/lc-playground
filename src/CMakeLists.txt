@@ -27,6 +27,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	MaxSumModuleSubarray.h
 	SumMinInterval.h
 	ScalarProduct.h
 	TwoRobots.h
