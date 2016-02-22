@@ -32,6 +32,7 @@
 #include "SumMinInterval.h"
 #include "MaxSumModuleSubarray.h"
 #include "TwoEqualSubArrays.h"
+#include "SimilarPair.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -102,7 +103,8 @@ int main(int argc, char * argv[])
         tt.addTest<ScalarProduct>(false);
         tt.addTest<SumMinInterval>(false);
         tt.addTest<MaxSumModuleSubarray>(false);
-        tt.addTest<TwoEqualSubArrays>(true);
+        tt.addTest<TwoEqualSubArrays>(false);
+        tt.addTest<SimilarPair>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
