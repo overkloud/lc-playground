@@ -32,6 +32,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	SwapNodes.h
 	HuffmanDecode.h
 	SimilarPair.h
 	TwoEqualSubArrays.h

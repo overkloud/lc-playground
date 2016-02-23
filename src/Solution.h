@@ -25,6 +25,9 @@ typedef unsigned int ui;
 typedef unsigned long long int ull;
 typedef size_t szt;
 
+typedef vector<int> vint;
+typedef vector<ll> vll;
+
 void print(vector<int> &v)
 {
     for(auto i : v)
@@ -112,6 +115,20 @@ vector<int> readInts(istream & in, const char delim = ' ', const int size = 0)
     string line;
     getline(in, line);
     return splitToInts(line, delim, size);
+}
+
+int readInt(istream & in)
+{
+    string line;
+    getline(in, line);
+    return atoi(line.c_str());
+}
+
+double readDouble(istream & in)
+{
+    string line;
+    getline(in, line);
+    return atof(line.c_str());
 }
 
 template <class T>

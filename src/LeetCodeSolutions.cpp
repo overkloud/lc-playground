@@ -34,6 +34,7 @@
 #include "TwoEqualSubArrays.h"
 #include "SimilarPair.h"
 #include "HuffmanDecode.h"
+#include "SwapNodes.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -106,7 +107,8 @@ int main(int argc, char * argv[])
         tt.addTest<MaxSumModuleSubarray>(false);
         tt.addTest<TwoEqualSubArrays>(false);
         tt.addTest<SimilarPair>(false);
-        tt.addTest<HuffmanDecode>(true);
+        tt.addTest<HuffmanDecode>(false);
+        tt.addTest<SwapNodes>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
