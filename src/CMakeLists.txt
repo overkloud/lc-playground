@@ -1,8 +1,13 @@
 cmake_minimum_required(VERSION 3.0)
 project ("LeetCodePlayground")
 
+if(MSVC)
+else()
+	SET(CMAKE_CXX_FLAGS "-std=c++11")
+endif(MSVC)
 
-SET(CMAKE_CXX_FLAGS "-std=c++11")
+SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:20971520")
+
 add_executable(runLeetCode 	
 	Solution.h
 	LeetCodeSolutions.cpp
