@@ -112,6 +112,29 @@ public:
         return count;
     }
 
+    ll dfs(Node * root, vector<ll> & bit, const int k, const int n)
+    {
+        ll count = 0;
+        if (root)
+        {
+            int i = std::max(1, root->val - k);
+            int j = std::min(n, root->val + k);
+            count = bit_q(bit, i, j);
+            bit_up(bit, 1, root->val, 1);
+            for (auto child : root->children)
+            {
+                count += dfs(child, bit, k, n);
+            }
+            bit_up(bit, 1, root->val, -1);
+        }
+        return count;
+    }
+
+    ll calcPair3(Node * root, const int k, const int n)
+    {
+        vector<ll> bit(n + 1, 0);
+        return dfs(root, bit, k , n);
+    }
 
     ll calcPair(Node * root, const int k, const int n)
     {
@@ -236,7 +259,7 @@ public:
         }
 
         //cout << calcPair(root, k, max) << endl;
-        cout << calcPair2(root, k, max) << endl;
+        cout << calcPair3(root, k, max) << endl;
     }
 
     virtual void test()
