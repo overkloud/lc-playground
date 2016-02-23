@@ -40,7 +40,7 @@ public:
     {
         vector<ll>  x;
         ll max = 0;
-        for (ll i = 0; i < v.size(); i++)
+        for (int i = 0; i < v.size(); i++)
         {
             if (0 == i)
             {
@@ -54,12 +54,12 @@ public:
             }
         }
 
-        for (ll i = 0; i < v.size(); i++)
+        for (szt i = 0; i < v.size(); i++)
         {
             max = std::max(max, x[i]);
             if (v.size() - 1 == max) return max;
 
-            for (ll j = 0; j < i; j++)
+            for (szt j = 0; j < i; j++)
             {
                 ll a = (x[i] - x[j] + M) % M;
                 max = std::max(a, max);
@@ -74,7 +74,7 @@ public:
         vector<ll>  x;
         set<P> s;
 
-        for (ll i = 0; i < v.size(); i++)
+        for (szt i = 0; i < v.size(); i++)
         {
             if (0 == i)
             {
@@ -91,13 +91,13 @@ public:
         }
 
         ll max = 0;
-        for (ll i = 0; i < x.size(); i++)
+        for (szt i = 0; i < x.size(); i++)
         {
             if (x[i] == M - 1) return M - 1;
 
             auto it = s.lower_bound(P(0,x[i] + 1));
 
-            if (it == s.end() || it->pos > i)
+            if (it == s.end() || (szt)it->pos > i)
             {
                 max = std::max(x[i], max);
             }
@@ -116,13 +116,14 @@ public:
     {
         string line; 
         getline(in, line);
-        ll t, n, m;
+        ll t, m;
+        int n;
         t = atoll(line.c_str());
 
         for (ll i = 0; i < t; i++)
         {
             vector<ll> a = readLLInts(in, ' ', 2);
-            n = a[0];
+            n = (int)a[0];
             m = a[1];
             vector<ll> v = readLLInts(in, ' ', n);
             cout << findMax(v, m) << endl;

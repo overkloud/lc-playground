@@ -81,11 +81,11 @@ public:
 
     struct pos
     {
-        int a;
-        int b;
-        int cost;
+        ll a;
+        ll b;
+        ll cost;
 
-        pos(int a, int b, int cost )
+        pos(ll a, ll b, ll cost )
         {
             this->a = min(a, b);
             this->b = max(a, b);
@@ -97,19 +97,19 @@ public:
             return getKey(a, b);
         }
 
-        static long long getKey(int a, int b)
+        static long long getKey(ll a, ll b)
         {
-            int i = min(a, b);
-            int j = max(a, b);
+            ll i = min(a, b);
+            ll j = max(a, b);
             long long key = a << 8 | b;
             return key;
         }
     };
 
-    int calc_help(vector<vector<int>> & v)
+    ll calc_help(vector<vector<int>> & v)
     {
         vector<map<long long, pos*>> cost;
-        for (int i = v.size() - 1; i >= 0; i--)
+        for (szt i = v.size() - 1; i >= 0; i--)
         {
             auto it = v[i];
             int in = it[0];
@@ -177,7 +177,7 @@ public:
             }
         }
 
-        int min = -1;
+        ll min = -1;
         auto x = cost.back();
         for (auto i : x)
         {
@@ -190,9 +190,9 @@ public:
         return min;
     }
 
-    int calc(vector<vector<int>> v, const int M)
+    ll calc(vector<vector<int>> v, const int M)
     {
-        int sum = 0;
+        ll sum = 0;
         for (auto i : v)
         {
             sum += abs(i[1] - i[0]);

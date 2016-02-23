@@ -6,7 +6,7 @@ class RotateImage : public  solution {
 
 
 public:
-    void Rotate(vector<vector<int>> & v, int s_i, int s_j, int size) 
+    void Rotate(vector<vector<int>> & v, int s_i, int s_j, szt size) 
     {
         if(0 == size || 1 == size) return;
         

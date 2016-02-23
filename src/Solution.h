@@ -20,6 +20,11 @@
 
 using namespace std;
 
+typedef long long int ll;
+typedef unsigned int ui;
+typedef unsigned long long int ull;
+typedef size_t szt;
+
 void print(vector<int> &v)
 {
     for(auto i : v)
@@ -131,9 +136,7 @@ public:
     }
     virtual void test(){ run();  };
     solution(){};
-    //private:
-    //solution(const BuySellStockII &){};
-    //solution & operator = (const BuySellStockII &){};
+    
 };
 
 
@@ -149,7 +152,7 @@ namespace testUtil
     vector<int> randomGen(const int size, const int range)
     {
         vector<int> results(size);
-        srand(time(NULL));
+        srand((unsigned int)time(NULL));
         for (int i = 0; i < size; i++)
         {
             results[i] = rand() % range;

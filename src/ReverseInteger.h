@@ -28,7 +28,7 @@ public:
         int ret = 0;
         for (unsigned int i = 0; i < V.size(); i++)
         {
-            const int power = V.size() - i - 1;
+            const size_t power = V.size() - i - 1;
             ret = ret + (int)(V[i] * pow(10, power));
         }
 

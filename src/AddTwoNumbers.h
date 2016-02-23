@@ -13,15 +13,15 @@ public:
         {}
     };
 
-    int64_t nodeToInt (ListNode *a)
+    ll nodeToInt (ListNode *a)
     {
         if(!a) return -1;
 
-        int64_t power = 0;
-        int64_t intA = 0;
+        ll power = 0;
+        ll intA = 0;
         while(a)
         {
-            intA += pow(10, power) * a->val;
+            intA += (ll)pow(10, power) * a->val;
             power++;
             a = a->next;            
         }
@@ -70,9 +70,9 @@ public:
     {
         if(!a || !b) return 0;
 
-        int64_t aa = nodeToInt(a);
-        int64_t bb = nodeToInt(b);
-        int64_t sum = aa + bb;
+        ll aa = nodeToInt(a);
+        ll bb = nodeToInt(b);
+        ll sum = aa + bb;
 
         return intToNode(sum);
     }

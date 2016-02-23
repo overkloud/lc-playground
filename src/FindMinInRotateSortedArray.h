@@ -17,13 +17,13 @@ You may assume no duplicate exists in the array.
     ***/
 
 public:
-    int findMin(vector<int>& nums, int s, int e) {
-        int n = nums.size();
+    int findMin(vector<int>& nums, szt s, szt e) {
+        szt n = nums.size();
         if (s > e) return 0;
         if (s == e) return nums[s];
         if ((e - s) == 1) return std::min(nums[e], nums[s]);
 
-        int mid = (e + s) / 2;
+        szt mid = (e + s) / 2;
         if(nums[s] > nums[mid])
         {
             return std::min(nums[s], findMin(nums, s, mid));

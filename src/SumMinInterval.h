@@ -28,7 +28,7 @@ public:
 
     void calcIntervals(vector<int> & v, vector<vector<int>> & M)
     {
-        int n = v.size();
+        szt n = v.size();
         for (int i = 0; i < n; i++)
         {
             M.push_back(vector<int>(n));
@@ -50,7 +50,7 @@ public:
             return M[a][b];
         };
 
-        int N = v.size();
+        szt N = v.size();
 
         calcIntervals(v, M);
 

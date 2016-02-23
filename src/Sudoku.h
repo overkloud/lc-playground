@@ -252,7 +252,7 @@ public:
 
         int searched = 0;
         int skipped = 0;
-        int total = 0;
+        size_t total = 0;
 
         typedef vector<vector<char>> SV;
         std::list<Sudoku> Q;

@@ -141,7 +141,7 @@ public:
             C[i] = M[i - 1] + C[i - 1];
         }
 
-        int size = v.size();
+        szt size = v.size();
         int count = 0;
         const string placeholder = "-";
         vector<string> results (size, "");

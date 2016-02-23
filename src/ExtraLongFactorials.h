@@ -75,7 +75,7 @@ public:
                 return ss.str();
             };
 
-            for (int i = digits.size() - 1; i >= 0; i--)
+            for (szt i = digits.size() - 1; i >= 0; i--)
             {
                 if (i == digits.size() - 1) out << (digits[i]);
                 else out << padZeros(digits[i]);

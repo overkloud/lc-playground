@@ -29,21 +29,21 @@ public:
     }
 
 
-    long long InsertionSort(vector<int> &v, int start, int end)
+    long long InsertionSort(vector<int> &v, ll start, ll end)
     {
         if (start == end) return 0;
 
         if (end - start >= 2)
         {
-            int mid = (end + start) / 2;
+            ll mid = (end + start) / 2;
             long long sum = InsertionSort(v, start, mid) + InsertionSort(v, mid + 1, end);
             
             if (v[mid + 1] < v[mid])
             {
                 vector<int> work(end - start + 1);
-                int i = start;
-                int j = mid + 1;
-                int pos = 0;
+                ll i = start;
+                ll j = mid + 1;
+                ll pos = 0;
                 while (i <= mid || j <= end)
                 {
                     if (i > mid)
@@ -78,9 +78,9 @@ public:
         }
 
         long long count = 0;
-        for (int i = start; i <= end; i++)
+        for (ll i = start; i <= end; i++)
         {
-            int j = i;
+            ll j = i;
             while (j > start && v[j - 1] > v[j])
             {
                 swap(v[j - 1], v[j]);

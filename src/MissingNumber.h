@@ -16,9 +16,9 @@ Two binary trees are considered equal if they are structurally identical and the
 class MissingNumber : public  solution {
 
 public:
-    int missingNumber(vector<int>& nums) {
-        const int n = nums.size();
-        const int N = (n + 1);
+    ll missingNumber(vector<ll>& nums) {
+        const size_t n = nums.size();
+        const szt N = (n + 1);
         
         bool haszero = false;
         bool hasN = false;
@@ -41,11 +41,11 @@ public:
         }
 
         if(!haszero) return 0;
-        if(!hasN) return n;
+        if(!hasN) return (ll)n;
 
         for(int i = 1; i < nums.size(); i++)
         {
-            if(nums[i] < N)
+            if(nums[i] < (ll)N)
             {
                 return i;
             }
@@ -56,7 +56,7 @@ public:
 
     void test()
     {
-        vector<int> v{1,0};
+        vector<ll> v{1,0};
         std::cout << missingNumber(v) << std::endl;
     }
 };

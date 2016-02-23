@@ -23,14 +23,14 @@ public:
 
         const vector<int> & n_1 = grayCode(n - 1);
 
-        vector<int> ret(pow(2, n));
+        vector<int> ret((int)pow(2, n));
         int k = 0;
         for (auto a : n_1)
         {
             int b = a << 1;
             ret[k++] = b;
         }
-        for (int i = n_1.size() - 1; i >= 0; i--)
+        for (size_t i = n_1.size() - 1; i >= 0; i--)
         {
             int b = n_1[i] << 1;
             b = b | 1;

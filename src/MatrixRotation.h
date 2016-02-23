@@ -18,7 +18,7 @@ public:
 
 
     // rotate 4 edges of the Rectangle, starting at position (i, j) for size m * n
-    Matrix & rotate4Edges(Matrix &M, const int i, const int j, const int m, const int n)
+    Matrix & rotate4Edges(Matrix &M, const ll i, const ll j, const ll m, const ll n)
     {
         if (m <= 1 || n <= 1) return M;
 
@@ -32,14 +32,14 @@ public:
         if (m >= 3)
         {
             temp = M[i + 1][j];
-            for (int x = i + 2; x <= i + m - 1; x++)
+            for (ll x = i + 2; x <= i + m - 1; x++)
             {
                 t1 = M[x][j];
                 M[x][j] = temp;
                 temp = t1;
             }
             temp = M[i + m - 2][j + n - 1];
-            for (int x = i + m - 3; x >= i; x--)
+            for (ll x = i + m - 3; x >= i; x--)
             {
                 t1 = M[x][j + n - 1];
                 M[x][j + n - 1] = temp;
@@ -52,14 +52,14 @@ public:
         {
             temp = M[i + m - 1][j + 1];
 
-            for (int x = j + 2; x <= j + n - 1; x++)
+            for (ll x = j + 2; x <= j + n - 1; x++)
             {
                 t1 = M[i + m - 1][x];
                 M[i + m - 1][x] = temp;
                 temp = t1;
             }
             temp = M[i][j + n - 2];
-            for (int x = j + n - 3; x >= j; x--)
+            for (ll x = j + n - 3; x >= j; x--)
             {
                 t1 = M[i][x];
                 M[i][x] = temp;
@@ -77,14 +77,14 @@ public:
     {
         if (M.size() == 0 || M[0].size() == 0) return M;
 
-        int m = M.size();
-        int n = M[0].size(); 
+        ll m = M.size();
+        ll n = M[0].size(); 
         int i = 0;
         int j = 0;
 
         while (m > 0 && n > 0)
         {
-            int x = 2 * (m + n) - 4;
+            szt x = 2 * (m + n) - 4;
             int t = r % x;
             for (int p = 0; p < t; p++)
                 rotate4Edges(M, i, j, m, n);

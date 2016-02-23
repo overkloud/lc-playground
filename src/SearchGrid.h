@@ -38,10 +38,10 @@ public:
     bool gridMatch(const Grid &A, int i, int j, const Grid &B)
     {
         if (A.empty() || B.empty()) return false;
-        int A_row = A.size();
-        int A_col = A[0].size();
-        int B_row = B.size();
-        int B_col = B[0].size();
+        size_t A_row = A.size();
+        size_t A_col = A[0].size();
+        size_t B_row = B.size();
+        size_t B_col = B[0].size();
 
         if (A_row - i < B_row) return false;
         if (A_col - j < B_col) return false;
@@ -62,10 +62,10 @@ public:
     {
         if (A.empty() || B.empty()) return false;
         if (A[0].empty() || B[0].empty()) return false;
-        int A_row = A.size();
-        int A_col = A[0].size();
-        int B_row = B.size();
-        int B_col = B[0].size();
+        size_t A_row = A.size();
+        size_t A_col = A[0].size();
+        size_t B_row = B.size();
+        size_t B_col = B[0].size();
 
         for (int i = 0; i < A.size(); i++)
         {

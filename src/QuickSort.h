@@ -6,12 +6,12 @@ class QuickSort: public  solution {
 
 public:
 
-    int partition(vector<int> & v, const int lo, const int hi)
+    int partition(vector<int> & v, const int lo, const size_t hi)
     {
         if (lo < hi)
         {
             int swapPoint = lo;
-            int p = hi;
+            szt p = hi;
             for (int i = lo; i < hi; i++)
             {
                 if (v[i] < v[p])
@@ -26,7 +26,7 @@ public:
         else return lo;
     }
 
-    void quickSort(vector<int> & v, const int lo, const int hi)
+    void quickSort(vector<int> & v, const int lo, const size_t hi)
     {
         if (lo < hi)
         {
