@@ -32,6 +32,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	HuffmanDecode.h
 	SimilarPair.h
 	TwoEqualSubArrays.h
 	MaxSumModuleSubarray.h

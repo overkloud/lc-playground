@@ -122,7 +122,14 @@ void initArray(T *array, const int size, function<T()> initFunc)
 class solution
 {
 public:
-    virtual void test(){};
+    virtual void run(istream & in){};
+    
+    virtual void run()
+    {
+        ifstream in("a.in");
+        run(in);
+    }
+    virtual void test(){ run();  };
     solution(){};
     //private:
     //solution(const BuySellStockII &){};
