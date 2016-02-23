@@ -27,27 +27,6 @@ public:
             children.push_back(c);
         }
 
-        bool operator < (const Node & n) const
-        {
-            return this->val < n.val;
-        }
-
-        bool operator < (const Node *& n) const
-        {
-            return this->val < n->val;
-        }
-
-        bool operator == (const Node & n) const
-        {
-            return this->val < n.val;
-        }
-
-
-        bool operator () (const Node & l, const Node & r) const
-        {
-            return l.val < r.val;
-        }
-
         bool operator () (const Node * l, const Node * r) const
         {
             return l->val < r->val;
@@ -57,7 +36,84 @@ public:
 
     typedef long long int ll;
 
-    ll calcPair(Node * root, const int k)
+    ll bit_q(vector<ll> & v, const int i)
+    {
+        ll sum = 0;
+        int index = i;
+        while (index > 0)
+        {
+            sum += v[index];
+            index -= (index & ((-1) * index));
+        }
+
+        return sum;
+    }
+
+    ll bit_q(vector<ll> & v, const int i, const int j)
+    {
+        return bit_q(v, j) - bit_q(v, i - 1);
+    }
+
+    void bit_up(vector<ll>& v, const int val, const int index, int reverse)
+    {
+        //int sum = 0;
+        int i = index;
+        while (i <= v.size() - 1)
+        {
+            v[i] += (val * reverse);
+            i += (i & (-1)*i);
+        }
+    }
+
+    ll calcPair2(Node * root, const int k, const int n)
+    {
+        vector<ll> bit(n + 1, 0);
+        stack<Node*> s;
+        int prevLv = 0;
+        //set<Node *, Node> a;
+        vector<Node*> v;
+        ll count = 0;
+        s.push(root);
+        //bit_up(bit, 1, root->val, 1);
+        while (!s.empty())
+        {
+            auto node = s.top();
+            s.pop();
+            for (auto n : node->children)
+                if (n->visited == false) s.push(n);
+            if (!node->visited)
+            {
+                node->visited = true;
+                int currLv = node->depth;
+                if (currLv > prevLv)
+                {
+                    prevLv = currLv;
+                    //a.insert(node->parent);
+                    v.push_back(node->parent);
+                    bit_up(bit, 1, node->parent->val, 1);
+                }
+                else if (currLv == prevLv)
+                {
+                }
+                else
+                {
+                    for (int i = 0; i < prevLv - currLv; i++)
+                    {
+                        auto it = v.back();
+                        bit_up(bit, 1, it->val, -1);
+                        v.erase(v.cbegin() + v.size() - 1);
+                    }
+                    prevLv = currLv;
+                }
+                ll c = bit_q(bit, std::max(1, node->val - k), std::min(n, node->val + k));
+                count += c;
+            }
+        }
+        return count;
+    }
+
+
+    ll calcPair(Node * root, const int k, const int n)
     {
         stack<Node*> s;
         int prevLv = 0;
@@ -83,11 +139,6 @@ public:
                 }
                 else if (currLv == prevLv)
                 {
-                    //auto it = a.find(node->parent);
-                    //if (it == a.end())
-                    //{
-                    //    a.insert(node->parent)
-                    //}
                 }
                 else
                 {
@@ -112,6 +163,7 @@ public:
         }
         return count;
     }
+
 
     void run(istream & in)
     {
@@ -169,10 +221,12 @@ public:
 
         stack<Node*> s;
         s.push(root);
+        int max = 0;
         while (s.empty() == false)
         {
             auto node = s.top();
             s.pop();
+            max = std::max(max, node->val);
             for (auto it : node->children)
                 s.push(it);
             if (node->parent)
@@ -181,7 +235,8 @@ public:
             }
         }
 
-        cout << calcPair(root, k) << endl;
+        //cout << calcPair(root, k, max) << endl;
+        cout << calcPair2(root, k, max) << endl;
     }
 
     virtual void test()
