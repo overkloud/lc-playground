@@ -36,6 +36,7 @@
 #include "HuffmanDecode.h"
 #include "SwapNodes.h"
 #include "MaxXor.h"
+#include "Cipher.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -110,7 +111,8 @@ int main(int argc, char * argv[])
         tt.addTest<SimilarPair>(false);
         tt.addTest<HuffmanDecode>(false);
         tt.addTest<SwapNodes>(false);
-        tt.addTest<MaxXor>(true);
+        tt.addTest<Cipher>(true);
+        tt.addTest<MaxXor>(false);
         tt.addTest<Sample>(false);
         tt.runTest();
     }

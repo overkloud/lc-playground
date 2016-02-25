@@ -25,6 +25,8 @@ typedef unsigned int ui;
 typedef unsigned long long int ull;
 typedef size_t szt;
 
+
+#define vt vector
 typedef vector<int> vint;
 typedef vector<ll> vll;
 

@@ -32,6 +32,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	Cipher.h
 	MaxXor.h
 	SwapNodes.h
 	HuffmanDecode.h
