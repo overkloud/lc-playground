@@ -75,7 +75,7 @@ public:
                 return ss.str();
             };
 
-            for (szt i = digits.size() - 1; i >= 0; i--)
+            for (int i = (int)digits.size() - 1; i >= 0; i--)
             {
                 if (i == digits.size() - 1) out << (digits[i]);
                 else out << padZeros(digits[i]);
@@ -84,7 +84,7 @@ public:
         }
     };
 
-    _int64 fact(int i)
+    ll fact(int i)
     {
         if (i == 1) return 1;
         if (i == 0) return 1;

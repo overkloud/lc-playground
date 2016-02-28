@@ -30,7 +30,7 @@ public:
             int b = a << 1;
             ret[k++] = b;
         }
-        for (size_t i = n_1.size() - 1; i >= 0; i--)
+        for (int i = (int)n_1.size() - 1; i >= 0; i--)
         {
             int b = n_1[i] << 1;
             b = b | 1;
