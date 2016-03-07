@@ -38,6 +38,7 @@
 #include "MaxXor.h"
 #include "Cipher.h"
 #include "FriendCircle.h"
+#include "LongestChain.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -79,6 +80,9 @@ public:
     }
 };
 
+#ifdef _WIN32
+LARGE_INTEGER testUtil::timer::Frequency;
+#endif
 
 int main(int argc, char * argv[])
 {
@@ -114,7 +118,8 @@ int main(int argc, char * argv[])
         tt.addTest<SwapNodes>(false);
         tt.addTest<Cipher>(false);
         tt.addTest<MaxXor>(false);
-        tt.addTest<FriendCircle>(true);
+        tt.addTest<FriendCircle>(false);
+        tt.addTest<LongestChain>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
