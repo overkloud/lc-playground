@@ -62,6 +62,9 @@ template <class T> vector<T> split(const char * str, const char c,  std::functio
     do
     {
         if (!str || !*str) break;
+        while (*str && *str == c)
+            str++;
+
         const char *begin = str;
 
         while (*str != c && *str)
@@ -75,8 +78,10 @@ template <class T> vector<T> split(const char * str, const char c,  std::functio
             if (count == size) break;
             v[count++] = transform(string(begin, str));
         }
+        while (*str && *str==c)
+            str++;
 
-    } while (0 != *str++);
+    } while (0 != *str);
 
     return v;
 }

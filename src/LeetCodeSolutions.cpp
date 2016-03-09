@@ -39,6 +39,7 @@
 #include "Cipher.h"
 #include "FriendCircle.h"
 #include "LongestChain.h"
+#include "QHeap1.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -119,7 +120,8 @@ int main(int argc, char * argv[])
         tt.addTest<Cipher>(false);
         tt.addTest<MaxXor>(false);
         tt.addTest<FriendCircle>(false);
-        tt.addTest<LongestChain>(true);
+        tt.addTest<LongestChain>(false);
+        tt.addTest<QHeap1>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
