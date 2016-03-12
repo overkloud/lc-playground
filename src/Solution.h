@@ -35,6 +35,7 @@ typedef size_t szt;
 
 
 #define vt vector
+#define pq priority_queue
 typedef vector<int> vint;
 typedef vector<ll> vll;
 

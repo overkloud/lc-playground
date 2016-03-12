@@ -40,6 +40,7 @@
 #include "FriendCircle.h"
 #include "LongestChain.h"
 #include "QHeap1.h"
+#include "FindMedian.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -121,7 +122,8 @@ int main(int argc, char * argv[])
         tt.addTest<MaxXor>(false);
         tt.addTest<FriendCircle>(false);
         tt.addTest<LongestChain>(false);
-        tt.addTest<QHeap1>(true);
+        tt.addTest<QHeap1>(false);
+        tt.addTest<FindMedian>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
