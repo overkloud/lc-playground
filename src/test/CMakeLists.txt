@@ -20,7 +20,9 @@ if(MSVC)
 	target_link_libraries(testall ../../lib/windows/gtest)
 	include_directories(../../include/windows)
 else()
-	SET(CMAKE_CXX_FLAGS "-std=c++11")
+    find_library(GTEST_LIBS NAMES gtest gtest_main PATHS ../../lib/linux/gtest/)
+    target_link_libraries(testall ${GTEST_LIBS})
+    include_directories(../../include/linux)
 endif(MSVC)
 
 

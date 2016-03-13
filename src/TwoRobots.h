@@ -109,7 +109,7 @@ public:
     ll calc_help(vector<vector<int>> & v)
     {
         vector<map<long long, pos*>> cost;
-        for (szt i = v.size() - 1; i >= 0; i--)
+        for (int i = (int)v.size() - 1; i >= 0; i--)
         {
             auto it = v[i];
             int in = it[0];

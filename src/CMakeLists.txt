@@ -6,6 +6,7 @@ if(MSVC)
 	SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:20971520")
 else()
 	SET(CMAKE_CXX_FLAGS "-std=c++11")
+    ##SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl --stack 20971520")
 endif(MSVC)
 
 add_executable(runLeetCode 	

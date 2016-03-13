@@ -9,7 +9,7 @@ public:
     ll bitToLong(vector<char> & c)
     {
         ll result = 0;
-        for (szt i = c.size() - 1; i >= 0; i--)
+        for (int i = (int)c.size() - 1; i >= 0; i--)
         {
             result += (c[i] - '0')*(ll)pow(2, c.size() - 1 - i);
         }
@@ -18,7 +18,7 @@ public:
     ll bitToLong(const string &s)
     {
         ll result = 0;
-        for (szt i = s.size() - 1; i >= 0; i--)
+        for (int i = (int)s.size() - 1; i >= 0; i--)
         {
             result += (s[i] - '0')*(ll)pow(2, s.size() - 1 - i);
         }
