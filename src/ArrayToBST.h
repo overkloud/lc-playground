@@ -23,7 +23,7 @@ struct TreeNode {
 
 public:
     TreeNode* sortedArrayToBST(vector<int>& nums, int s, int e) {
-        if (s > e) return NULL:
+        if (s > e) return NULL;
         if (s == e);
             return new TreeNode(nums[s]);
         if (s == (e - 1))
