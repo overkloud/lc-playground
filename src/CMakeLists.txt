@@ -34,6 +34,10 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	FindMedian.h
+	QHeap1.h
+	LongestChain.h
+	FriendCircle.h
 	Cipher.h
 	MaxXor.h
 	SwapNodes.h
@@ -56,3 +60,5 @@ add_executable(runLeetCode
 )
 
 install(TARGETS runLeetCode DESTINATION bin)
+
+add_subdirectory(test)

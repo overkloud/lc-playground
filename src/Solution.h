@@ -1,5 +1,9 @@
 #ifndef __SOLUTION_H_
 #define __SOLUTION_H_
+#ifdef _WIN32
+#define NOMINMAX
+#include <Windows.h>
+#endif 
 
 #include <tuple>
 #include <string>
@@ -17,6 +21,10 @@
 #include <cstdio>
 #include <time.h>
 #include <iostream>
+#include <random>
+#include <unordered_map>
+#include <list>
+#include <forward_list>
 
 using namespace std;
 
@@ -27,6 +35,7 @@ typedef size_t szt;
 
 
 #define vt vector
+#define pq priority_queue
 typedef vector<int> vint;
 typedef vector<ll> vll;
 
@@ -54,6 +63,9 @@ template <class T> vector<T> split(const char * str, const char c,  std::functio
     do
     {
         if (!str || !*str) break;
+        while (*str && *str == c)
+            str++;
+
         const char *begin = str;
 
         while (*str != c && *str)
@@ -67,8 +79,10 @@ template <class T> vector<T> split(const char * str, const char c,  std::functio
             if (count == size) break;
             v[count++] = transform(string(begin, str));
         }
+        while (*str && *str==c)
+            str++;
 
-    } while (0 != *str++);
+    } while (0 != *str);
 
     return v;
 }
@@ -168,7 +182,7 @@ class HRsolution : public solution
 
 namespace testUtil
 {
-    vector<int> randomGen(const int size, const int range)
+    vector<int> randomGen(const int size, const int range, bool file = true)
     {
         vector<int> results(size);
         srand((unsigned int)time(NULL));
@@ -177,14 +191,128 @@ namespace testUtil
             results[i] = rand() % range;
         }
 
-        ofstream out("a.random");
-        for (auto i : results)
+        if (file)
         {
-            out << i << " ";
+            ofstream out("a.random");
+            for (auto i : results)
+            {
+                out << i << " ";
+            }
+            out.close();
         }
-        out.close();
         return results;
     }
+
+    string randomGenWord(const int len)
+    {
+        string s;
+        for (int i = 1; i <= len; i++)
+        {
+            std::default_random_engine gen;
+            std::uniform_int_distribution<int> dist(0, 26);
+            char c = (char)(dist(gen) + 'a');
+            s.append(1, c);
+        }
+
+        return s;
+    }
+
+    vector<string> randomGenWords(const int size, const int maxLen)
+    {
+        vector<string> v;
+
+        vector<int> vv = randomGen(size*maxLen, 101, false);
+        int pos = 0;
+        ofstream out("a.random");
+        
+        
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 1; j < maxLen; j++)
+            {
+                string s;
+                for (int i = 1; i <= j; i++)
+                {
+                    char c = vv[pos++] % 4 + 'a';
+                    s.append(1, c);
+                    if (pos == vv.size())
+                    {
+                        pos = 0;
+                        vv = randomGen(size*maxLen, 101, false);
+                    }
+                }
+                //v.push_back(s);
+                out << s << endl;
+            }
+        }
+        out.close();
+
+
+        return v;
+    }
+
+
+    class timer
+    {
+#ifdef _WIN32
+        LARGE_INTEGER StartingTime, EndingTime, ElapsedMicroseconds;
+        static LARGE_INTEGER Frequency;
+#endif
+
+    public: timer()
+        {
+#ifdef _WIN32
+            QueryPerformanceFrequency(&Frequency);
+#endif
+        }
+
+        void start()
+        {
+#ifdef _WIN32
+            QueryPerformanceCounter(&StartingTime);
+#endif
+        }
+
+        double stop()
+        {
+            // We now have the elapsed number of ticks, along with the
+            // number of ticks-per-second. We use these values
+            // to convert to the number of elapsed microseconds.
+            // To guard against loss-of-precision, we convert
+            // to microseconds *before* dividing by ticks-per-second.
+#ifdef _WIN32
+            QueryPerformanceCounter(&EndingTime);
+            ElapsedMicroseconds.QuadPart = EndingTime.QuadPart - StartingTime.QuadPart;
+            ElapsedMicroseconds.QuadPart *= 1000000;
+            ElapsedMicroseconds.QuadPart /= Frequency.QuadPart;
+            return ElapsedMicroseconds.QuadPart / 1000.0;
+#else 
+            return 0;
+#endif
+            
+        }
+
+        double getTime()
+        {
+            return stop();
+        }
+
+        void clear()
+        {
+#ifdef _WIN32
+            StartingTime.QuadPart = 0;
+            EndingTime.QuadPart = 0;
+            ElapsedMicroseconds.QuadPart = 0;
+#endif
+        }
+
+        void reset()
+        {
+            clear();
+            start();
+        }
+
+    };
 
 };
 

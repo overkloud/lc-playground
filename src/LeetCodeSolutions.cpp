@@ -37,6 +37,10 @@
 #include "SwapNodes.h"
 #include "MaxXor.h"
 #include "Cipher.h"
+#include "FriendCircle.h"
+#include "LongestChain.h"
+#include "QHeap1.h"
+#include "FindMedian.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -78,6 +82,9 @@ public:
     }
 };
 
+#ifdef _WIN32
+LARGE_INTEGER testUtil::timer::Frequency;
+#endif
 
 int main(int argc, char * argv[])
 {
@@ -111,8 +118,12 @@ int main(int argc, char * argv[])
         tt.addTest<SimilarPair>(false);
         tt.addTest<HuffmanDecode>(false);
         tt.addTest<SwapNodes>(false);
-        tt.addTest<Cipher>(true);
+        tt.addTest<Cipher>(false);
         tt.addTest<MaxXor>(false);
+        tt.addTest<FriendCircle>(false);
+        tt.addTest<LongestChain>(false);
+        tt.addTest<QHeap1>(false);
+        tt.addTest<FindMedian>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
