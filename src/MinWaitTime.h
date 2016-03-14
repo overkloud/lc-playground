@@ -33,7 +33,7 @@ public:
     typedef pq<order, vt<order>, ocomp> Orders;
     void takeOrder(vt<vll> & v, ll & pos, Orders & orders, ll & t)
     {
-        if (pos >= v.size()) return;
+        if ((ull)pos >= v.size()) return;
 
         if (orders.size() == 0)
         {
@@ -42,7 +42,7 @@ public:
         else
         {
         }
-        while (pos < v.size() && v[pos][0] <= t)
+        while ((ull)pos < v.size() && v[pos][0] <= t)
         {
             orders.push(mkp(v[pos][0], v[pos][1]));
             pos++;
