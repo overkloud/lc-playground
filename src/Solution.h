@@ -5,26 +5,30 @@
 #include <Windows.h>
 #endif 
 
-#include <tuple>
+// c++ basics
 #include <string>
-#include <vector>
-#include <map>
 #include <cassert>
-#include <queue>
 #include <cmath>
 #include <memory>
-#include <set>
-#include <stack>
 #include <sstream>
 #include <functional>
 #include <fstream>
 #include <cstdio>
 #include <time.h>
 #include <iostream>
+//algo
 #include <random>
+#include <algorithm>
+// containers
+#include <tuple>
+#include <queue>
+#include <set>
+#include <stack>
 #include <unordered_map>
 #include <list>
 #include <forward_list>
+#include <vector>
+#include <map>
 
 using namespace std;
 
@@ -36,6 +40,7 @@ typedef size_t szt;
 
 #define vt vector
 #define pq priority_queue
+#define mkp make_pair
 typedef vector<int> vint;
 typedef vector<ll> vll;
 
@@ -161,11 +166,13 @@ class solution
 {
 public:
     virtual void run(istream & in){};
+
+    virtual void run(istream & in, ostream & out) {};
     
     virtual void run()
     {
         ifstream in("a.in");
-        run(in);
+        run(in, std::cout);
     }
     virtual void test(){ run();  };
     solution(){};

@@ -99,7 +99,6 @@ public:
         map<string, pair<int, szt>> count;
         szt maxlen = M.rbegin()->first;
         szt minlen = M.begin()->first;
-#define mkp make_pair
         for (auto letter : M[1])
         {
             count[letter] = make_pair(1, maxlen - minlen + 1);

@@ -41,6 +41,7 @@
 #include "LongestChain.h"
 #include "QHeap1.h"
 #include "FindMedian.h"
+#include "MinWaitTime.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -123,7 +124,8 @@ int main(int argc, char * argv[])
         tt.addTest<FriendCircle>(false);
         tt.addTest<LongestChain>(false);
         tt.addTest<QHeap1>(false);
-        tt.addTest<FindMedian>(true);
+        tt.addTest<FindMedian>(false);
+        tt.addTest<MinWaitTime>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }

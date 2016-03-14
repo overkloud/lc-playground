@@ -33,6 +33,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	MinWaitTime.h
 	FindMedian.h
 	QHeap1.h
 	LongestChain.h
