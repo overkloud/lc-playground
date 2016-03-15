@@ -9,25 +9,16 @@ public:
     struct Node
     {
         char c;
-        set<char>s;
         Node * children['z'-'a' + 1];
         int count = 0;
 
-        Node()
+        Node() : children()
         {
-            for (auto p : children)
-            {
-                p = nullptr;
-            }
         }
 
-        Node(char ch)
+        Node(char ch) : children()
         {
             c = ch;
-            for (auto p : children)
-            {
-                p = nullptr;
-            }
         }
     };
 
@@ -36,7 +27,7 @@ public:
         Node * p = root;
         for (auto c : w)
         {
-            if (p->s.find(c) != p->s.end())
+            if (p->children[c - 'a'] != nullptr)
             {
                 p = p->children[c-'a'];
             }
@@ -55,8 +46,8 @@ public:
         Node * p = root;
         for (char c : w)
         {
-            Node * n;
-            if (p->s.find(c) != p->s.end())
+            Node * n = nullptr;
+            if (p->children[c-'a'] != nullptr)
             {
                 n = p->children[c-'a'];
             }
@@ -66,7 +57,6 @@ public:
             }
             n->count++; //p->count++;
             p->children[c-'a'] = n;
-            p->s.insert(c);
             p = n;
         }
     }
