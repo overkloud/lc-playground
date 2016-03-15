@@ -33,6 +33,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	NoPrefixSet.h
 	Trie.h
 	MinWaitTime.h
 	FindMedian.h

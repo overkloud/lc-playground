@@ -44,6 +44,9 @@ typedef size_t szt;
 typedef vector<int> vint;
 typedef vector<ll> vll;
 
+
+#define fori(n) for(int i = 0; i < n; ++i)
+
 void print(vector<int> &v)
 {
     for(auto i : v)

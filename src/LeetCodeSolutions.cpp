@@ -43,6 +43,7 @@
 #include "FindMedian.h"
 #include "MinWaitTime.h"
 #include "Trie.h"
+#include "NoPrefixSet.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -127,7 +128,8 @@ int main(int argc, char * argv[])
         tt.addTest<QHeap1>(false);
         tt.addTest<FindMedian>(false);
         tt.addTest<MinWaitTime>(false);
-        tt.addTest<Trie>(true);
+        tt.addTest<Trie>(false);
+        tt.addTest<NoPrefixSet>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
