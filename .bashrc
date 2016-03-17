@@ -217,3 +217,5 @@ alias gdiff='git diff'
 #alias grep='g'
 
 #alias vsmk='cmake -CMAKE_INSTALL_PREFIX=../install/ -G "Visual Studio 12" ../src/'
+alias mk2013='cmake -D CMAKE_INSTALL_PREFIX=../install/ -G "Visual Studio 12 2013 Win64" ../src/'
+alias mk2015='cmake -D CMAKE_INSTALL_PREFIX=../install/ -G "Visual Studio 14 2015 Win64" ../src/'
