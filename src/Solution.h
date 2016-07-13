@@ -41,11 +41,13 @@ typedef size_t szt;
 #define vt vector
 #define pq priority_queue
 #define mkp make_pair
+#define fori(n) for(int i = 0; i < n; ++i)
+
 typedef vector<int> vint;
 typedef vector<ll> vll;
+typedef set<int> sint;
+typedef set<ll> sll;
 
-
-#define fori(n) for(int i = 0; i < n; ++i)
 
 void print(vector<int> &v)
 {
@@ -132,6 +134,17 @@ vector<long long int> readLLInts(istream & in, const char delim = ' ', const int
         return atoll(s.c_str());
     };
     return split<long long int>(line.c_str(), delim, f, size);
+}
+
+vector<double> readDoubles(istream & in, const char delim = ' ', const int size = 0)
+{
+	string line;
+	getline(in, line);
+	std::function <double(string)> f = [](string s)
+	{
+		return atof(s.c_str());
+	};
+	return split<double>(line.c_str(), delim, f, size);
 }
 
 vector<int> readInts(istream & in, const char delim = ' ', const int size = 0)

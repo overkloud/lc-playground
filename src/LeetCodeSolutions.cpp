@@ -44,6 +44,9 @@
 #include "MinWaitTime.h"
 #include "Trie.h"
 #include "NoPrefixSet.h"
+#include "MaxSubarray.h"
+#include "CurrencyArb.h"
+#include "FixedIncomeAlloc.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -129,7 +132,10 @@ int main(int argc, char * argv[])
         tt.addTest<FindMedian>(false);
         tt.addTest<MinWaitTime>(false);
         tt.addTest<Trie>(false);
-        tt.addTest<NoPrefixSet>(true);
+        tt.addTest<MaxSubarray>(false);
+        tt.addTest<NoPrefixSet>(false);
+        tt.addTest<CurrencyArb>(false);
+        tt.addTest<FixedIncomeAlloc>(false);
         tt.addTest<Sample>(false);
         tt.runTest();
     }

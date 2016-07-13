@@ -33,6 +33,11 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	DemandMoney.h
+	LazySort.h
+	FixedIncomeAlloc.h
+	CurrencyArb.h
+	MaxSubarray.h
 	NoPrefixSet.h
 	Trie.h
 	MinWaitTime.h

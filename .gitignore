@@ -2,3 +2,5 @@ build
 install
 *sublime*project
 *sublime*workspace
+src/LeetCodeSolutions.cpp.bak
+src/CMakeLists.txt.bak
