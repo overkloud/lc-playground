@@ -33,6 +33,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	JumpGame.h
 	DemandMoney.h
 	LazySort.h
 	FixedIncomeAlloc.h

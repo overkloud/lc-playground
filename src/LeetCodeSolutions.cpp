@@ -47,6 +47,7 @@
 #include "MaxSubarray.h"
 #include "CurrencyArb.h"
 #include "FixedIncomeAlloc.h"
+#include "JumpGame.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -136,6 +137,7 @@ int main(int argc, char * argv[])
         tt.addTest<NoPrefixSet>(false);
         tt.addTest<CurrencyArb>(false);
         tt.addTest<FixedIncomeAlloc>(false);
+        tt.addTest<JumpGame>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
