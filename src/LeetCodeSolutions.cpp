@@ -48,6 +48,8 @@
 #include "CurrencyArb.h"
 #include "FixedIncomeAlloc.h"
 #include "JumpGame.h"
+#include "NumberSolitaire.h"
+#include "MinAbsSum.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -137,7 +139,9 @@ int main(int argc, char * argv[])
         tt.addTest<NoPrefixSet>(false);
         tt.addTest<CurrencyArb>(false);
         tt.addTest<FixedIncomeAlloc>(false);
-        tt.addTest<JumpGame>(true);
+        tt.addTest<JumpGame>(false);
+        tt.addTest<NumberSolitaire>(false);
+        tt.addTest<MinAbsSum>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
