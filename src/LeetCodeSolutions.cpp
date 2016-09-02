@@ -5,6 +5,7 @@
 
 
 #include "Solution.h"
+#include "RegexMatch.h"
 #include "BuyStock.h"
 #include "ClimbStairs.h"
 #include "PascalTree.h"
@@ -141,7 +142,8 @@ int main(int argc, char * argv[])
         tt.addTest<FixedIncomeAlloc>(false);
         tt.addTest<JumpGame>(false);
         tt.addTest<NumberSolitaire>(false);
-        tt.addTest<MinAbsSum>(true);
+        tt.addTest<MinAbsSum>(false);
+        tt.addTest<RegexMatch>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }

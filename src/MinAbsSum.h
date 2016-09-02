@@ -14,7 +14,7 @@ public:
     int slow_solution(vector<int> &A) {
         
 
-        int N = A.size();
+        szt N = A.size();
         int S = 0;
         for (int &i : A)
         {
