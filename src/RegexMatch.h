@@ -126,7 +126,7 @@ public:
         else
         {
             //result = map[pos];
-            result = map[s_pos][p_pos];
+            result = map[s_pos][p_pos] == 0 ? false : true;
         }
 
         return result;

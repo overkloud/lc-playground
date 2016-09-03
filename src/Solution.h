@@ -15,6 +15,7 @@
 #include <fstream>
 #include <cstdio>
 #include <time.h>
+#include <limits.h>
 #include <iostream>
 //algo
 #include <random>
@@ -33,20 +34,25 @@
 using namespace std;
 
 typedef long long int ll;
-typedef unsigned int ui;
+typedef unsigned int uint;
 typedef unsigned long long int ull;
 typedef size_t szt;
 
 
 #define vt vector
 #define pq priority_queue
+#define uomap unordered_map
 #define mkp make_pair
-#define fori(n) for(int i = 0; i < n; ++i)
+#define rangen(i,n) for(int i = 0; i < n; i++)
+#define fori(n) rangen(i, n)
+#define range(n) rangen(i, n)
+
 
 typedef vector<int> vint;
 typedef vector<ll> vll;
 typedef set<int> sint;
 typedef set<ll> sll;
+
 
 
 void print(vector<int> &v)

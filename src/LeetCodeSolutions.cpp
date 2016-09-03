@@ -51,6 +51,7 @@
 #include "JumpGame.h"
 #include "NumberSolitaire.h"
 #include "MinAbsSum.h"
+#include "LRUCache.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -143,7 +144,8 @@ int main(int argc, char * argv[])
         tt.addTest<JumpGame>(false);
         tt.addTest<NumberSolitaire>(false);
         tt.addTest<MinAbsSum>(false);
-        tt.addTest<RegexMatch>(true);
+        tt.addTest<RegexMatch>(false);
+        tt.addTest<LRUCache>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
