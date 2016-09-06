@@ -41,7 +41,7 @@ typedef size_t szt;
 
 #define vt vector
 #define pq priority_queue
-#define uomap unordered_map
+#define umap unordered_map
 #define mkp make_pair
 #define rangen(i,n) for(int i = 0; i < n; i++)
 #define fori(n) rangen(i, n)
@@ -52,7 +52,6 @@ typedef vector<int> vint;
 typedef vector<ll> vll;
 typedef set<int> sint;
 typedef set<ll> sll;
-
 
 
 void print(vector<int> &v)

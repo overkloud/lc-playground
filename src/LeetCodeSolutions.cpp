@@ -146,6 +146,7 @@ int main(int argc, char * argv[])
         tt.addTest<MinAbsSum>(false);
         tt.addTest<RegexMatch>(false);
         tt.addTest<LRUCache>(true);
+        tt.addTest<LRUCache_fast>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
