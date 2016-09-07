@@ -33,6 +33,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	AdditiveNumber.h
 	LRUCache.h
 	KCGTest.h
 	MinAbsSum.h

@@ -2,6 +2,8 @@
 
 using namespace std;
 
+#define LRUCACHE_NO_PERF_TEST
+
 class LRUCache_fast;
 class LRUCache: public  solution {
 
@@ -189,6 +191,7 @@ public:
 
     void perfTest()
     {
+#ifndef LRUCACHE_NO_PERF_TEST
         set(883, 1946);
         set(1154, 1018);
         get(1003);
@@ -5213,10 +5216,12 @@ public:
         assert( 1527 ==  get(485));
         assert( 836 ==  get(347));
         assert( -1 ==  get(44) );
+#endif
     }
 
     virtual void perfTest2()
     {
+#ifndef LRUCACHE_NO_PERF_TEST
         set(1178, 3401);
         set(903, 6060);
         set(1127, 3054);
@@ -25716,6 +25721,7 @@ public:
         set(324, 2754);
         get(75);
         get(277);
+#endif;
     }
 };
 

@@ -52,6 +52,7 @@
 #include "NumberSolitaire.h"
 #include "MinAbsSum.h"
 #include "LRUCache.h"
+#include "AdditiveNumber.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -145,8 +146,9 @@ int main(int argc, char * argv[])
         tt.addTest<NumberSolitaire>(false);
         tt.addTest<MinAbsSum>(false);
         tt.addTest<RegexMatch>(false);
-        tt.addTest<LRUCache>(true);
-        tt.addTest<LRUCache_fast>(true);
+        //tt.addTest<LRUCache>(true);
+        //tt.addTest<LRUCache_fast>(true);
+        tt.addTest<AdditiveNumber>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
