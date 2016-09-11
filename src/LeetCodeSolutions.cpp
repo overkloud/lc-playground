@@ -150,7 +150,7 @@ int main(int argc, char * argv[])
         tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        tt.addTest<Triangle>(true);
+        //tt.addTest<SuperPow>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }

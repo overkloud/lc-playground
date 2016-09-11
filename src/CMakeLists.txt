@@ -33,6 +33,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	SuperPow.h
 	Triangle.h
 	LargestDivisiveSubset.h
 	AdditiveNumber.h
