@@ -55,6 +55,7 @@
 #include "AdditiveNumber.h"
 #include "LargestDivisiveSubset.h"
 #include "Triangle.h"
+#include "HIndex.h"
 #include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
@@ -150,7 +151,7 @@ int main(int argc, char * argv[])
         tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        //tt.addTest<SuperPow>(true);
+        tt.addTest<HIndex>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
