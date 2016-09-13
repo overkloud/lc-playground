@@ -33,6 +33,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	GasStation.h
 	SearchRange.h
 	HIndex.h
 	SuperPow.h
