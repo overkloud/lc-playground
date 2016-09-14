@@ -64,6 +64,7 @@
 #endif
 #include "Solution.h"
 #include "GroupAnagrams.h"
+#include "LowestCommonAncestor.h"
 #include "SampleHeader.h"
 
 
@@ -155,7 +156,7 @@ int main(int argc, char * argv[])
         //tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        tt.addTest<GroupAnagrams>(true);
+        tt.addTest<LowestCommonAncestor>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
