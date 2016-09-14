@@ -1,10 +1,8 @@
 // LeetCodeSolutions.cpp : Defines the entry point for the console application.
 //
 
-#include <iostream>
 
-
-#include "Solution.h"
+#ifdef OLDCASES
 #include "RegexMatch.h"
 #include "BuyStock.h"
 #include "ClimbStairs.h"
@@ -58,12 +56,16 @@
 #include "HIndex.h"
 #include "SearchRange.h"
 #include "GasStation.h"
-#include "SampleHeader.h"
 #include "FindMinInRotateSortedArray.h"
 #include "RotateImage.h"
 #include "UniquePaths.h"
 #include "Permutation.h"
 #include "NextRightNode.h" 
+#endif
+#include "Solution.h"
+#include "GroupAnagrams.h"
+#include "SampleHeader.h"
+
 
 
 using namespace std;
@@ -153,7 +155,7 @@ int main(int argc, char * argv[])
         //tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        tt.addTest<GasStation>(true);
+        tt.addTest<GroupAnagrams>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
