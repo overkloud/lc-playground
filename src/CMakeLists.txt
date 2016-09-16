@@ -33,6 +33,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	MinHeightTrees.h
 	LowestCommonAncestor.h
 	GroupAnagrams.h
 	GasStation.h
