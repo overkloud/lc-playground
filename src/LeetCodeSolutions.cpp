@@ -66,6 +66,7 @@
 #include "GroupAnagrams.h"
 #include "LowestCommonAncestor.h"
 #include "MinHeightTrees.h"
+#include "KPairsSmallestSum.h"
 #include "SampleHeader.h"
 
 
@@ -157,7 +158,7 @@ int main(int argc, char * argv[])
         //tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        tt.addTest<MinHeightTrees>(true);
+        tt.addTest<KPairsSmallestSum>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
