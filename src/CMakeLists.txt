@@ -33,6 +33,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	UniqueBST2.h
 	KPairsSmallestSum.h
 	MinHeightTrees.h
 	LowestCommonAncestor.h

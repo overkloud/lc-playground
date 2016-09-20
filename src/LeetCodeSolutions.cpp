@@ -61,12 +61,13 @@
 #include "UniquePaths.h"
 #include "Permutation.h"
 #include "NextRightNode.h" 
-#endif
-#include "Solution.h"
 #include "GroupAnagrams.h"
 #include "LowestCommonAncestor.h"
 #include "MinHeightTrees.h"
 #include "KPairsSmallestSum.h"
+#endif
+#include "Solution.h"
+#include "UniqueBST2.h"
 #include "SampleHeader.h"
 
 
@@ -158,7 +159,7 @@ int main(int argc, char * argv[])
         //tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        tt.addTest<KPairsSmallestSum>(true);
+        tt.addTest<UniqueBST2>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
