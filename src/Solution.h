@@ -1,5 +1,6 @@
 #ifndef __SOLUTION_H_
 #define __SOLUTION_H_
+//#pragma warning (disable:4267)
 #ifdef _WIN32
 #define NOMINMAX
 #include <Windows.h>
@@ -46,6 +47,7 @@ typedef size_t szt;
 #define rangen(i,n) for(int i = 0; i < n; i++)
 #define fori(n) rangen(i, n)
 #define range(n) rangen(i, n)
+#define for_it(iter, container) for(auto iter = container.begin(); iter!=container.end(); ++iter)
 
 
 typedef vector<int> vint;

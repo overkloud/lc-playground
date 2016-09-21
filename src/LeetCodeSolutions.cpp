@@ -69,6 +69,7 @@
 #include "Solution.h"
 #include "UniqueBST2.h"
 #include "UniquePath2.h"
+#include "CourseSchedule.h"
 #include "SampleHeader.h"
 
 
@@ -160,7 +161,7 @@ int main(int argc, char * argv[])
         //tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        tt.addTest<UniquePath2>(true);
+        tt.addTest<CourseSchedule>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
