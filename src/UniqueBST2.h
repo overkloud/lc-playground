@@ -38,27 +38,23 @@ public:
                 {
                     list<int> children(n.begin(), n.end());
                     auto it = children.begin();
-                    //TreeNode * root = new TreeNode(*it);
                     std::advance(it, i);
                     int rootEle = *it;
                     auto next = children.erase(it);
 
+                    list<int> left(children.begin(), next);
+                    list<int> right(next, children.end());
 
+                    auto leftTrees = generateTrees(left);
+                    auto rightTrees = generateTrees(right);
+                    for (auto leftIt = leftTrees->begin(); leftIt != leftTrees->end(); leftIt++)
                     {
-                        list<int> left(children.begin(), next);
-                        list<int> right(next, children.end());
-
-                        auto leftTrees = generateTrees(left);
-                        auto rightTrees = generateTrees(right);
-                        for (auto leftIt = leftTrees->begin(); leftIt != leftTrees->end(); leftIt++)
+                        for (auto rightIt = rightTrees->begin(); rightIt != rightTrees->end(); rightIt++)
                         {
-                            for (auto rightIt = rightTrees->begin(); rightIt != rightTrees->end(); rightIt++)
-                            {
-                                TreeNode *root = new TreeNode(rootEle);
-                                root->left = *leftIt;
-                                root->right = *rightIt;
-                                result->push_back(root);
-                            }
+                            TreeNode *root = new TreeNode(rootEle);
+                            root->left = *leftIt;
+                            root->right = *rightIt;
+                            result->push_back(root);
                         }
                     }
                 }
