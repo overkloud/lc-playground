@@ -51,6 +51,7 @@ typedef size_t szt;
 
 
 typedef vector<int> vint;
+typedef vector<vector<int>> vvint;
 typedef vector<ll> vll;
 typedef set<int> sint;
 typedef set<ll> sll;
@@ -182,6 +183,24 @@ void initArray(T *array, const int size, function<T()> initFunc)
     {
         array[i] = initFunc();
     }
+}
+
+template <class T>
+ostream & vector2Stream(ostream & out, vector<T> & v)
+{
+    for_each(v.begin(), v.end(), [&v, &out](auto it) {out << it << " "; });
+    out << endl;
+    return out;
+}
+
+template <class T>
+typename vector<T>::const_iterator vector_find(vector<T> & v, T& target)
+{
+    for (auto it = v.begin(); it != v.end(); it++)
+    {
+        if (*it == target) return it;
+    }
+    return v.end();
 }
 
 
