@@ -164,7 +164,7 @@ int main(int argc, char * argv[])
         //tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        tt.addTest<MiniParser>(true);
+        tt.addTest<Permutation2>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }

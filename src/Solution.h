@@ -15,9 +15,11 @@
 #include <functional>
 #include <fstream>
 #include <cstdio>
-#include <time.h>
+#include <ctime>
 #include <limits.h>
 #include <iostream>
+#include <ratio>
+#include <chrono>
 //algo
 #include <random>
 #include <algorithm>
@@ -188,7 +190,7 @@ void initArray(T *array, const int size, function<T()> initFunc)
 template <class T>
 ostream & vector2Stream(ostream & out, vector<T> & v)
 {
-    for_each(v.begin(), v.end(), [&v, &out](auto it) {out << it << " "; });
+    for_each(v.begin(), v.end(), [&out](T& it) {out << it << " "; });
     out << endl;
     return out;
 }
@@ -306,12 +308,14 @@ namespace testUtil
 #ifdef _WIN32
         LARGE_INTEGER StartingTime, EndingTime, ElapsedMicroseconds;
         static LARGE_INTEGER Frequency;
+#else
+        chrono::high_resolution_clock::time_point t1;
 #endif
 
     public: timer()
         {
 #ifdef _WIN32
-            QueryPerformanceFrequency(&Frequency);
+            QueryPerformanceFrequency(&Frequency); 
 #endif
         }
 
@@ -319,9 +323,12 @@ namespace testUtil
         {
 #ifdef _WIN32
             QueryPerformanceCounter(&StartingTime);
+#else
+            t1 = chrono::high_resolution_clock::now();
 #endif
         }
 
+        // return millieseconds
         double stop()
         {
             // We now have the elapsed number of ticks, along with the
@@ -336,7 +343,10 @@ namespace testUtil
             ElapsedMicroseconds.QuadPart /= Frequency.QuadPart;
             return ElapsedMicroseconds.QuadPart / 1000.0;
 #else 
-            return 0;
+            auto t2 = chrono::high_resolution_clock::now();
+            chrono::duration<double, std::milli> time_span = t2-t1;
+
+            return time_span.count();
 #endif
             
         }
@@ -352,6 +362,10 @@ namespace testUtil
             StartingTime.QuadPart = 0;
             EndingTime.QuadPart = 0;
             ElapsedMicroseconds.QuadPart = 0;
+#else
+            //chrono::time_point<high_resolution_clock, chrono::duration<double, std::milli>> t;
+            chrono::high_resolution_clock::time_point t;
+            t1 = t;
 #endif
         }
 

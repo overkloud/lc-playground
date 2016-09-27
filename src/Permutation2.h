@@ -130,7 +130,7 @@ public:
             range(NumTestCases)
             {
                 cout << "------------------" << endl;
-                vint v2 = testUtil::randomGen(8, j, false);
+                vint v2 = testUtil::randomGen(12, j, false);
                 vector2Stream<int>(cout, v2);
                 testUtil::timer t;
                 t.start();
