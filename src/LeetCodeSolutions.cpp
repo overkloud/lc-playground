@@ -73,6 +73,7 @@
 #include "CourseSchedule2.h"
 #include "Permutation2.h"
 #include "MiniParser.h"
+#include "MinPathSum.h"
 #include "SampleHeader.h"
 
 
@@ -164,7 +165,7 @@ int main(int argc, char * argv[])
         //tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        tt.addTest<Permutation2>(true);
+        tt.addTest<MinPathSum>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }

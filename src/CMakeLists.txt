@@ -33,6 +33,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	MinPathSum.h
 	MiniParser.h
 	Permutation2.h
 	CourseSchedule2.h
