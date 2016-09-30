@@ -74,6 +74,7 @@
 #include "Permutation2.h"
 #include "MiniParser.h"
 #include "MinPathSum.h"
+#include "LongestIncreasingSubSequence.h"
 #include "SampleHeader.h"
 
 
@@ -165,7 +166,7 @@ int main(int argc, char * argv[])
         //tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        tt.addTest<MinPathSum>(true);
+        tt.addTest<LongestIncreasingSubSequence>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }

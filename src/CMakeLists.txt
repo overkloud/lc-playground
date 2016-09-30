@@ -33,6 +33,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	LongestIncreasingSubSequence.h
 	MinPathSum.h
 	MiniParser.h
 	Permutation2.h
