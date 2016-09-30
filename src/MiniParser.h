@@ -122,7 +122,7 @@ public:
 
 
     NestedInteger deserialize(string s) {
-        NestedInteger result = deserialize(s, 0, s.size() - 1);
+        NestedInteger result = deserialize(s, 0, (int)s.size() - 1);
         return result;
     }
 

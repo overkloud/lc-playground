@@ -56,8 +56,8 @@ public:
         int result = 0;
         if (grid.size() != 0 && grid[0].size() != 0)
         {
-            int row = grid.size() - 1;
-            int col = grid[0].size() - 1;
+            int row = (int)grid.size() - 1;
+            int col = (int)grid[0].size() - 1;
             mmap.clear();
             range(row+1)
             {
