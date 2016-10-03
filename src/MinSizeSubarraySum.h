@@ -10,7 +10,6 @@ public:
     int minSubArrayLen(int s, vector<int>& n) {
         int result = 0;
         int N = (int)n.size();
-        bool hassolutoin;
         int sum = 0;
         for_each(n.begin(), n.end(), [&sum](int & i) {sum += i; });
         if (sum >= s)

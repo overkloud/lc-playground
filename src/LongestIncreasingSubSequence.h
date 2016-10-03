@@ -77,7 +77,7 @@ public:
             }
 
             L.clear();
-            lengthOfLIS(nums, nums.size() - 1);
+            lengthOfLIS(nums, (int)nums.size() - 1);
             for (auto l : L)
             {
                 result = std::max(result, (int)l.size());
