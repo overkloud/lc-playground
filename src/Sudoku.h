@@ -323,7 +323,7 @@ public:
     {
         //set<char> a({ '1', '2', '3', '4', '5', '6', '7', '8', '9' });
 
-        char a[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+        char a[] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
         int sq_i = (i / 3) * 3;
         int sq_j = (j / 3) * 3;
 
@@ -338,27 +338,27 @@ public:
         }
 
         //for_each(v[i].begin(), v[i].end(), [&a](char i){ if (i != '.') a.erase(i); });
-        for_each(v[i].begin(), v[i].end(), [&a](char i){ if (i != '.') a[i - '1'] = '0'; });
+        for_each(v[i].begin(), v[i].end(), [&a](char i) { if (i != '.') a[i - '1'] = '0'; });
 
         for_each(v.begin(), v.end(), [&a, &j](vector<char>& s) {if (s[j] != '.') a[s[j] - '1'] = '0'; });
 
 
         vector<char> s;
-        for(char i : a)
+        for (char i : a)
         {
-            if(i != '0') s.push_back(i);
+            if (i != '0') s.push_back(i);
         }
         return s;
     }
 
     SudokuUnit getMinScore()
     {
-        int minScore  = 9*9;
+        int minScore = 9 * 9;
         int posI = -1;
         int posJ = -1;
 
         // score of rows
-        for(int i = 0;  i < 9; i++)
+        for (int i = 0; i < 9; i++)
         {
             int s = getRowScore(i);
             //scoreQueue.emplace(i, -1, s);
@@ -370,7 +370,7 @@ public:
             }
         }
 
-        for(int i = 0;  i < 9; i++)
+        for (int i = 0; i < 9; i++)
         {
             int s = getColScore(i);
             //scoreQueue.emplace(-1, i, s);
@@ -382,13 +382,13 @@ public:
             }
         }
 
-        for(int i = 0; i < 9; i = i + 3)
+        for (int i = 0; i < 9; i = i + 3)
         {
             for (int j = 0; j < 9; j = j + 3)
             {
                 int s = getSqScore(i, j);
                 //scoreQueue.emplace(i, j, s);
-                if(s > 0 && s < minScore)
+                if (s > 0 && s < minScore)
                 {
                     minScore = s;
                     posI = i;
@@ -403,17 +403,17 @@ public:
     int getRowScore(int i)
     {
         int score = 0;
-        for_each(v[i].begin(), v[i].end(), [&score](const char & c){ if (c == '.') score++;}
-            );
+        for_each(v[i].begin(), v[i].end(), [&score](const char & c) { if (c == '.') score++; }
+        );
         return score;
     }
 
     int getColScore(int i)
     {
         int score = 0;
-        for(vector<char> & row : v)
+        for (vector<char> & row : v)
         {
-            if(row[i] == '.') score++;
+            if (row[i] == '.') score++;
         }
         return score;
     }
@@ -426,7 +426,7 @@ public:
         {
             for (int q = j; q < j + 3; q++)
             {
-                if(v[p][q] == '.')
+                if (v[p][q] == '.')
                 {
                     score++;
                 }
@@ -436,6 +436,85 @@ public:
 
         return score;
     }
+
+
+    bool solve_bt (vt<vt<char>> & v, int count )
+    {
+        if (count == 9*9)
+        {
+            cout << "--------------***-----------------" << endl;
+            print();
+            return true;
+        }
+        //cout << "-------------------------------" << endl;
+        //print();
+        //cout << count << endl;
+        int maxPossible = 9;
+
+        for (int i = 0; i < v.size(); i++)
+        {
+            for (int j = 0; j < v[i].size(); j++)
+            {
+                if (v[i][j] == '.')
+                {
+                    auto possibles = getPossible(i, j);
+                    maxPossible = std::min((int)possibles.size(), maxPossible);
+                }
+            }
+        }
+        
+        for (int i = 0; i < v.size(); i++)
+        {
+            for (int j = 0; j < v[i].size(); j++)
+            {
+                if (v[i][j] == '.')
+                {
+                    auto possibles = getPossible(i, j);
+                    if (possibles.size() == 0) return false;
+                    if ((int)possibles.size() <= maxPossible)
+                    {
+                        for (auto c : possibles)
+                        {
+                            //cout << "(" << i << "," << j << ")=" << c << endl;
+                            v[i][j] = c;
+                            if (solve_bt(v, count + 1))
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                v[i][j] = '.';
+                            }
+                        }
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+
+    void solve_bt(vt<vt<char>> & v)
+    {
+        assert(v.size() == 9 && v[0].size() == 9);
+        this->v = v;
+        int count = 0;
+        for (auto row : v)
+        {
+            for (auto c : row)
+            {
+                if (c != '.')
+                {
+                    count++;
+                }
+            }
+        }
+
+        solve_bt(this->v, count);
+    }
+
 
     void test()
     {
@@ -451,35 +530,18 @@ public:
         v.push_back({'.',    '3',    '7',   '.',    '.',    '.',    '.',    '2',    '.'});
         v.push_back({'8',    '.',    '.',   '1',    '.',    '.',    '.',    '.',    '.'});
 
+        vt<vt<char>> v1(v);
+        vt<vt<char>> v2(v);
+        Sudoku s_org(v1);
+        Sudoku s_bt(v2);
 
-        Sudoku s(v);
-        //s.print();
-        /*cout << s.isValidSudoku() << endl;
-        for (int i = 0; i < 9; i++)
-            cout << s.getRowScore(i) << "\t";
-        cout << endl;
-        for (int i = 0; i < 9; i++)
-            cout << s.getColScore(i) << "\t";
-        cout << endl;
-        for (int i = 0; i < 9; i = i + 3)
-            for (int j = 0; j < 9; j = j + 3)
-                cout << "(" << i << ", " << j << ")=" << s.getSqScore(i, j) << endl;*/
-
-        //toString ts;
-        //string s1(ts(s.getPossible(0, 0)));
-        //cout << "Possible for (0,0)" << s1 << endl;
-        //cout << "Possible for (8,8)" << ts(s.getPossible(8, 8)) << endl;
-
-        using namespace std::chrono;
-
-        high_resolution_clock::time_point t1 = high_resolution_clock::now();
-        Sudoku::Solve(s);
-        high_resolution_clock::time_point t2 = high_resolution_clock::now();
-
-        duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
-
-        std::cout << "It took me " << time_span.count() << " seconds.";
-        std::cout << std::endl;
+        testUtil::timer t;
+        t.start();
+        Sudoku::Solve(s_org);
+        std::cout << "Original method took " << t.stop() << " ms." << endl;
+        t.reset();
+        s_bt.solve_bt(v2);
+        std::cout << "BT method took " << t.stop() << " ms." << endl;
 
         v.clear();
         v.push_back({'.',    '.',    '.',   '.',    '.',    '7',    '.',    '.',    '9'});
@@ -491,30 +553,17 @@ public:
         v.push_back({'8',    '.',    '.',   '.',    '2',    '3',    '.',    '.',    '.'});
         v.push_back({'7',    '.',    '.',   '.',    '5',    '.',    '.',    '4',    '.'});
         v.push_back({'5',    '3',    '1',   '.',    '7',    '.',    '.',    '.',    '.'});
-        t1 = high_resolution_clock::now();
-        Sudoku s2(v);
-        Sudoku::Solve(s2);
-        t2 = high_resolution_clock::now();
-
-        time_span = duration_cast<duration<double>>(t2 - t1);
-
-        std::cout << "It took me " << time_span.count() << " seconds.";
-        std::cout << std::endl;
+        v1 = v;
+        v2 = v;
+        Sudoku s_org2(v1);
+        Sudoku s_bt2(v2);
+        t.reset();
+        Sudoku::Solve(s_org2);
+        std::cout << "Original method took " << t.stop() << " ms." << endl;
+        t.reset();
+        s_bt2.solve_bt(v2);
+        std::cout << "BT method took " << t.stop() << " ms." << endl;
     }
 
 };
-
-
-// class Solution {
-// public:
-//     void solveSudoku(vector<vector<char> > &board) {
-//         Sudoku sdk(board);
-//         vector<vector<char>> v = Sudoku::Solve(sdk);
-
-//         for(int i = 0; i < 9; i++)
-//             for(int j = 0; j < 9; j++)
-//                 board[i][j] = v[i][j];
-//     }
-// };
-
 
