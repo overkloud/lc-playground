@@ -65,8 +65,6 @@
 #include "LowestCommonAncestor.h"
 #include "MinHeightTrees.h"
 #include "KPairsSmallestSum.h"
-#endif
-#include "Solution.h"
 #include "UniqueBST2.h"
 #include "UniquePath2.h"
 #include "CourseSchedule.h"
@@ -76,6 +74,10 @@
 #include "MinPathSum.h"
 #include "LongestIncreasingSubSequence.h"
 #include "MinSizeSubarraySum.h"
+#include "Sudoku.h"
+#endif
+#include "Solution.h"
+#include "NQueen.h"
 #include "SampleHeader.h"
 
 
@@ -167,7 +169,7 @@ int main(int argc, char * argv[])
         //tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        tt.addTest<MinSizeSubarraySum>(true);
+        tt.addTest<NQueen>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }

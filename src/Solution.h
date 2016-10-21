@@ -18,6 +18,7 @@
 #include <ctime>
 #include <limits.h>
 #include <iostream>
+#include <iterator>
 #include <ratio>
 #include <chrono>
 #include <thread>
@@ -58,6 +59,7 @@ typedef vector<vector<int>> vvint;
 typedef vector<ll> vll;
 typedef set<int> sint;
 typedef set<ll> sll;
+typedef pair<int, int> pii;
 
 
 void print(vector<int> &v)
