@@ -78,6 +78,7 @@
 #endif
 #include "Solution.h"
 #include "NQueen.h"
+#include "WordLadder.h"
 #include "SampleHeader.h"
 
 
@@ -169,7 +170,7 @@ int main(int argc, char * argv[])
         //tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        tt.addTest<NQueen>(true);
+        tt.addTest<WordLadder>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }

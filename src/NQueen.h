@@ -179,7 +179,7 @@ bool safePlace(board &b, const int row, const int col)
             return false;
     }
 
-    const int n = b.size();
+    const int n = (int) b.size();
     for (int i = 1; i <=col ; i++)
     {
         int x = row - i;
