@@ -15,7 +15,6 @@
 #include "AddTwoNumbers.h"
 #include "Sudoku.h"
 #include "MissingNumber.h"
-#include "LongestParenthese.h"
 #include "GrayCode.h"
 #include "KthSmallest.h"
 #include "TimeConversion.h"
@@ -74,11 +73,12 @@
 #include "MinPathSum.h"
 #include "LongestIncreasingSubSequence.h"
 #include "MinSizeSubarraySum.h"
+#include "NQueen.h"
+#include "WordLadder.h"
 #include "Sudoku.h"
 #endif
 #include "Solution.h"
-#include "NQueen.h"
-#include "WordLadder.h"
+#include "LongestParenthese.h"
 #include "SampleHeader.h"
 
 
@@ -170,7 +170,7 @@ int main(int argc, char * argv[])
         //tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        tt.addTest<WordLadder>(true);
+        tt.addTest<LongestParenthese>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }

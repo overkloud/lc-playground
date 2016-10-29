@@ -12,35 +12,50 @@ class LongestParenthese : public solution
 {
 
 public:
-    static int longestValidParentheses(string s) {
+    int longestValidParentheses(string s) {
+        int maxLen = 0;
+        int n = (int)s.size();
+        if (n >= 1)
+        {
+            vector<int> dp(n, 0);
+            dp[0] = 0;
 
-        // stack <char> t;
-        // int totalMax = 0;
-        // int currenMax = 0;
-        // for(int i = 0; i < s.length(); i++)
-        // {
-        //  char c  = s.at(i);
-        //  if(c == '(')
-        //  {
-        //      t.push(c);
-        //      currentMax = 0;
-        //  }
-        //  else
-        //  {
-        //      if(!t.empty())
-        //      {
-        //          t.pop();
-        //          currentMax += 2;
-        //          if(t.empty())
-        //          {
-        //              totalMax += currentMax;
-        //          }
-        //      }
-        //  }
-        // }
-  //       return maxLength;
+            for (int i = 1; i < n; i++)
+            {
+                const char c = s[i];
+                if (c == ')')
+                {
+                    if (s[i - 1] == '(')
+                    {
+                        int j = i - 2;
+                        if (j >= 0)  dp[i] = dp[j] + 2;
+                        else dp[i] = 2;
+                    }
+                    else
+                    {
+                        int j = i - 1 - dp[i - 1];
+                        if (j >= 0 && s[j] == '(')
+                        {
+                            if (j >= 1)
+                            {
+                                dp[i] = 2 + dp[i - 1] + dp[j - 1];
+                            }
+                            else
+                                dp[i] = 2 + dp[i - 1];
+                        }
+                        else dp[i] = 0;
+                    }
+                }
+                else
+                {
+                    dp[i] = 0;
+                }
 
-        return 0;
+                maxLen = std::max(maxLen, dp[i]);
+            }
+
+        }
+        return maxLen;
     }
 
     void test()
