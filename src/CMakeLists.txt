@@ -33,6 +33,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	MinWindow.h
 	WordLadder.h
 	NQueen.h
 	MinSizeSubarraySum.h

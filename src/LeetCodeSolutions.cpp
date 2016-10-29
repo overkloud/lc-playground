@@ -79,6 +79,7 @@
 #endif
 #include "Solution.h"
 #include "LongestParenthese.h"
+#include "MinWindow.h"
 #include "SampleHeader.h"
 
 
@@ -170,7 +171,7 @@ int main(int argc, char * argv[])
         //tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        tt.addTest<LongestParenthese>(true);
+        tt.addTest<MinWindow>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
