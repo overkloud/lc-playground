@@ -31,7 +31,7 @@ public:
 
         }
 
-        return maxLen;
+        return (int)maxLen;
     }
 
     int lengthOfLongestSubstring2(string s) {
