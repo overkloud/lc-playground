@@ -34,6 +34,9 @@ add_executable(runLeetCode
 	GrayCode.h
 	SampleHeader.h
 	AQR.h
+	LongestSubstringKRepeat.h
+	LongestSubstringNoRepeat.h
+	MinWindow.h
 	WordLadder.h
 	NQueen.h
 	MinSizeSubarraySum.h
