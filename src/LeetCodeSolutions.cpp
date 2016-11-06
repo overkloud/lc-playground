@@ -76,9 +76,10 @@
 #include "NQueen.h"
 #include "WordLadder.h"
 #include "Sudoku.h"
+#include "LongestParenthese.h"
 #endif
 #include "Solution.h"
-#include "LongestParenthese.h"
+#include "AQR.h"
 #include "SampleHeader.h"
 
 
@@ -170,7 +171,7 @@ int main(int argc, char * argv[])
         //tt.addTest<RegexMatch>(false);
         //tt.addTest<LRUCache>(true);
         //tt.addTest<LRUCache_fast>(true);
-        tt.addTest<LongestParenthese>(true);
+        tt.addTest<AQR>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
