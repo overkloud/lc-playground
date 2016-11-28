@@ -34,6 +34,7 @@ add_executable(runLeetCode
 	GrayCode.h
 	SampleHeader.h
 	Jeffreies.h
+	strStr.h
 	LongestCommonSubstring.h
 	AQR.h
 	LongestSubstringKRepeat.h
