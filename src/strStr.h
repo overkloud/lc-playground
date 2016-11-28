@@ -85,7 +85,7 @@ public:
                     if(hash_value < 0) hash_value += K;
                 }
                 h_prev = hash_value;
-                cout << s.substr(start, m) << ":" << hash_value << endl;
+                //cout << s.substr(start, m) << ":" << hash_value << endl;
                 if(M.count(hash_value) == 0)
                 {
                     list<szt> l(1, start);
@@ -104,7 +104,7 @@ public:
                     }
                     if(!match)
                     {
-                        cout << "we found collsion << " << s.substr(start, m) << " : " << hash_value << endl;
+                        //cout << "we found collsion << " << s.substr(start, m) << " : " << hash_value << endl;
                         M[hash_value].push_back(start);  
                     }
                 }
@@ -112,7 +112,7 @@ public:
 
 
             auto keyHash = hash(t, 0, m);
-            cout << t << "->" << keyHash << endl;
+            //cout << t << "->" << keyHash << endl;
             if(M.count(keyHash))
             {
                 for(auto wordPos : M[keyHash])
@@ -130,6 +130,82 @@ public:
     };
 
 
+    class Solution_KMP : public Interface
+    {
+    private:
+        // Pay attention! 
+        // the prefix under index i in the table above is 
+        // is the string from pattern[0] to pattern[i - 1] 
+        // inclusive, so the last character of the string under 
+        // index i is pattern[i - 1]   
+
+        // https://www.topcoder.com/community/data-science/data-science-tutorials/introduction-to-string-searching-algorithms/
+        void build_fail_function(const string & t, vint & f)
+        {
+            auto n = t.size();
+            for(int i = 2; i <= n; i++)
+            {
+                int j = f[i - 1];
+                for (;;)
+                {
+                    if (t[j] == t[i - 1])
+                    {
+                        f[i] = j + 1;
+                        break;
+                    }
+                    if (j == 0)
+                    {
+                        f[i] = 0;
+                        break;
+                    }
+                    j = f[j];
+                }
+            }
+        }
+
+    public:
+        int strStr(const string& s, const string &t)
+        {
+            szt result = -1;
+
+            if (t.empty())
+            {
+                result = 0;
+            }
+            else if (s.size() >= t.size())
+            {
+               vint f(t.size()+1, 0);
+               build_fail_function(t, f);
+               szt i = 0, j = 0;
+               auto n = s.size();
+               auto m = t.size();
+               while (true)
+               {
+                   if (j == n) break;
+
+                   if (t[i] == s[j])
+                   {
+                       i++; j++;
+                       if (i == m)  // found a match
+                       {
+                           result = j - m;
+                           break;
+                       }
+                   }
+                   else if (i > 0)
+                   {
+                       i = f[i];
+                   }
+                   else
+                   {
+                       j++;
+                   }
+               }
+            }
+            return (int)result;
+        }
+    };
+
     virtual void test()
     {
         //string s = "First line of the input contains no of test cases  T,the T test cases follow.";
@@ -140,14 +216,27 @@ public:
         //string t("aa");
         //cout << (int)'A' << endl;
         Solution_Hash s1;
-        cout << s1.strStr(s,t) << endl;
+        Solution_KMP s2;
+        assert(s1.strStr(s, t) == s2.strStr(s, t));
 
-        ifstream in("a.in");
-        string ss2;
-        string ts2;
-        getline(in, ss2);
-        getline(in, ts2);
-        //cout << ss2.size() << " " << ts2.size() << endl;
-        cout << s1.strStr(ss2,ts2) << endl;  
+        int tests = 5;
+        range(tests)
+        {
+            auto v = testUtil::randomGen(1000, 25, false);
+            string s(v.size(), 'a');
+            rangen(j, s.size())
+            {
+                s[j] += v[j];
+            }
+            this_thread::sleep_for(1s);
+            auto v2 = testUtil::randomGen(2, 25, false);
+            string t(v2.size(), 'a');
+            rangen(j, t.size())
+            {
+                t[j] += v2[j];
+            }
+
+            assert(s1.strStr(s, t) == s2.strStr(s, t));
+        }
     }
 };
