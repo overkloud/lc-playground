@@ -47,18 +47,18 @@ public:
     {
         if (k == 1)
         {
-            for (auto i : arr)
+            range(arr.size())
             {
-                v.push_back(i);
+                v[i] = arr[i];
             }
         }
         else
         {
-            vint v_p;
+            vint v_p(arr.size()-k+2,INT_MAX);
             calc(arr, k - 1, v_p);
             for (int i = 0; i < arr.size()-k + 1; i++)
             {
-                v.push_back(std::min(arr[i + k - 1], v_p[i]));
+                v[i]=(std::min(arr[i + k - 1], v_p[i]));
             }
         }
     }
@@ -73,7 +73,7 @@ public:
             return *std::min_element(arr.begin(), arr.end());
         }
 
-        vint v;
+        vint v(arr.size()-k+1, INT_MAX);
         calc(arr, k, v);
         return *std::max_element(v.begin(), v.end());
     }
@@ -152,6 +152,17 @@ public:
 
         vint v3 = {2,5,4,6,8};
         assert(4 == segment(v3, 3));
+
+        testUtil::timer t1;
+        t1.start();
+        vint v4 = testUtil::randomGen(2000, 50, false);
+        //vint v4 = { 49,2,18,10,45,1,13,3,29,26,5,22,48,49,41,23,22,0,40,19 };
+        auto r4 = segment(v4, 500);
+        cout << t1.stop() << endl;
+        t1.reset();
+        auto r5 = segment_slow(v4, 500);
+        assert(r4 == r5);
+        cout << t1.stop() << endl;
 
     }
 };
