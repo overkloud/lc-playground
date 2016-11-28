@@ -85,6 +85,7 @@
 #endif
 #include "Solution.h"
 #include "LongestCommonSubstring.h"
+#include "strStr.h"
 #include "SampleHeader.h"
 
 
@@ -178,7 +179,7 @@ int main(int argc, char * argv[])
         //tt.addTest<LRUCache_fast>(true);
         /*tt.addTest<AQR>(true);
         tt.addTest<LongestSubstringKRepeat>(true);*/
-        tt.addTest<LongestCommonSubstring>(true);
+        tt.addTest<strStr>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
