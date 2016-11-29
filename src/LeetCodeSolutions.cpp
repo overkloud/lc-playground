@@ -85,10 +85,11 @@
 #include "LongestCommonSubstring.h"
 #include "Jeffreies.h"
 #include "LongestCommonSubstring.h"
+#include "LongestAbsoluteFilePath.h"
 #include "strStr.h"
 #endif
 #include "Solution.h"
-#include "LongestAbsoluteFilePath.h"
+#include "LongestSubstringAtMostKDistinctCharacters.h"
 #include "SampleHeader.h"
 
 
@@ -182,7 +183,7 @@ int main(int argc, char * argv[])
         //tt.addTest<LRUCache_fast>(true);
         /*tt.addTest<AQR>(true);
         tt.addTest<LongestSubstringKRepeat>(true);*/
-        tt.addTest<LongestAbsoluteFilePath>(true);
+        tt.addTest<LongestSubstringAtMostKDistinctCharacters>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }
