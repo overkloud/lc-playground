@@ -29,7 +29,7 @@ public:
 
         // read cumulative val of (x,y)
         // x and y are 0 index'd
-        int read(szt x, szt y)
+        int read(int x, int y)
         {
             x++; y++;
             int sum = 0;
@@ -46,7 +46,7 @@ public:
             return sum;
         }
 
-        int readSingle(szt x, szt y)
+        int readSingle(int x, int y)
         {
             int sum = 0;
             if (x >= 0 && x < max_x && y >= 0 && y < max_y)

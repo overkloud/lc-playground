@@ -257,7 +257,7 @@ namespace dataStructure
         }
 
         // read cumulative frequency at idx
-        int read(szt idx)
+        int read(int idx)
         {
             idx++;
             int sum = 0;
@@ -269,7 +269,7 @@ namespace dataStructure
             return sum;
         }
 
-        void update(szt idx, int val)
+        void update(int idx, int val)
         {
             idx++;
             while (idx <= maxIndexValue)
@@ -279,7 +279,7 @@ namespace dataStructure
             }
         }
 
-        int readSingle(szt idx)
+        int readSingle(int idx)
         {
             return read(idx) - read(idx - 1);
         }
