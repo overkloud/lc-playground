@@ -33,6 +33,8 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	SumQueryMutable.h
+	SumQuery2DMutable.h
 	LongestSubstringAtMostKDistinctCharacters.h
 	LongestAbsoluteFilePath.h
 	Jeffreies.h

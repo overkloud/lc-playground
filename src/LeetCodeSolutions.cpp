@@ -87,9 +87,11 @@
 #include "LongestCommonSubstring.h"
 #include "LongestAbsoluteFilePath.h"
 #include "strStr.h"
+#include "LongestSubstringAtMostKDistinctCharacters.h"
 #endif
 #include "Solution.h"
-#include "LongestSubstringAtMostKDistinctCharacters.h"
+#include "SumQuery2DMutable.h"
+#include "SumQueryMutable.h"
 #include "SampleHeader.h"
 
 
@@ -183,7 +185,7 @@ int main(int argc, char * argv[])
         //tt.addTest<LRUCache_fast>(true);
         /*tt.addTest<AQR>(true);
         tt.addTest<LongestSubstringKRepeat>(true);*/
-        tt.addTest<LongestSubstringAtMostKDistinctCharacters>(true);
+        tt.addTest<SumQuery2DMutable>(true);
         tt.addTest<Sample>(false);
         tt.runTest();
     }

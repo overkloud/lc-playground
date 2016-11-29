@@ -1,8 +1,9 @@
 #ifndef __SOLUTION_H_
 #define __SOLUTION_H_
-//#pragma warning (disable:4267)
+//#pragma warning (disable:4146)
 #ifdef _WIN32
 #define NOMINMAX
+#pragma warning (disable:4146)
 #include <Windows.h>
 #endif 
 
@@ -234,7 +235,66 @@ class HRsolution : public solution
     virtual void run(istream & in, ostream & out) = 0;
 };
 
+namespace dataStructure
+{
+    class BIT {
+    public:
+        BIT(const szt n) : maxIndexValue(calcSize(n))
+        {
+            vint nt(maxIndexValue + 1, 0);
+            t.swap(nt);
+        }
 
+
+        BIT(vint & in) : maxIndexValue(calcSize(in.size()))
+        {
+            vint nt(maxIndexValue + 1, 0);
+            t.swap(nt);
+            for (szt i = 0; i < in.size(); i++)
+            {
+                update(i, in[i]);
+            }
+        }
+
+        // read cumulative frequency at idx
+        int read(szt idx)
+        {
+            idx++;
+            int sum = 0;
+            while (idx > 0 && idx <= maxIndexValue)
+            {
+                sum += t[idx];
+                idx -= (idx & -idx);
+            }
+            return sum;
+        }
+
+        void update(szt idx, int val)
+        {
+            idx++;
+            while (idx <= maxIndexValue)
+            {
+                t[idx] += val;
+                idx += (idx & -idx);
+            }
+        }
+
+        int readSingle(szt idx)
+        {
+            return read(idx) - read(idx - 1);
+        }
+    private:
+        szt calcSize(const szt n)
+        {
+            return (szt)std::pow(2, (szt)std::ceil(log(n) / log(2)));
+        }
+
+        // t's index starting at 1, not 0, to maxIndexValue.
+        vint t;
+        szt maxIndexValue;
+    };
+
+};
 namespace testUtil
 {
     vector<int> randomGen(const int size, const int range, bool file = true)
