@@ -33,6 +33,7 @@ add_executable(runLeetCode
 	RegexMatch.h
 	GrayCode.h
 	SampleHeader.h
+	LongestAbsoluteFilePath.h
 	Jeffreies.h
 	strStr.h
 	LongestCommonSubstring.h
